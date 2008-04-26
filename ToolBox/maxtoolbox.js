@@ -44,6 +44,13 @@ g.out_offset = 1;
 g.num_connec = 1;
 g.distxy = 0;  //Vérifie si X et Y sont pesé en même temps.
 
+max.definecommand('I','patcher', 'insertobj');
+max.definecommand('R','patcher', 'insertobj');
+max.definecommand('C','patcher', 'insertobj');
+max.definecommand('N','patcher', 'insertobj');
+max.definecommand('O','patcher', 'insertobj');
+
+
 function clean_up()
 {
 	compteur = 0;
