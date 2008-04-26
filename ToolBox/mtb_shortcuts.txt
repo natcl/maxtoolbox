@@ -1,0 +1,9 @@
+info, You can customize shortcuts here change the ascii numbers;
+113, sm;
+97, ms;
+67, cc;
+119, sr;
+115, rs;
+101, rr;
+120, hd;
+121, vd;

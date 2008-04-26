@@ -1,0 +1,4 @@
+max definecommand I patcher insertobj;
+max definecommand R patcher insertobj;
+max definecommand C patcher insertobj;
+max definecommand N patcher insertobj;
