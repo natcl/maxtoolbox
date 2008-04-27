@@ -3,7 +3,7 @@ autowatch = 1;
 if (max.version < "454")
 	post("Max ToolBox : Your version of Max/MSP needs to be at least 4.5.4, please update it.\n");
 else
-	post("Max ToolBox Version b11-dev by Nathanaël Lécaudé\n");
+	post("Max ToolBox Version b12-dev by Nathanaël Lécaudé\n");
 
 // Constantes
 const X1 = 0;
