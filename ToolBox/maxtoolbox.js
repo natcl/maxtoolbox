@@ -22,6 +22,7 @@ var valid = false;
 var objarray = new Array();
 
 var temp_patch; // Variable temporaire servant à stocker Frontpatcher
+var patching_mode = "patching_rect";
 
 var argtosend = new Array();  // Variable contenant les arguemnts à envoyer à la fonction send
 
@@ -164,9 +165,9 @@ function alignsorty(a,b)
 
 function alignsortrow(a,b)
 {
-	if (a.rect[X1] < b.rect[X1]) return -1;
-	else if (a.rect[X1] > b.rect[X1]) return 1;
-	else return 0;
+        if (a.rect[X1] < b.rect[X1]) return -1;
+        else if (a.rect[X1] > b.rect[X1]) return 1;
+        else return 0;
 }
 
 function findmax(maxarray)
@@ -196,9 +197,6 @@ function alignhorz()
 	var deltax = 0;
 	var objs = 0;
 	var newpos = new Array();
-	if (arguments.length == 0 && g.distxy != 1)
-		titletemp = max.frontpatcher.wind.title;
-	titletemp_patcher = max.frontpatcher;
 	
 	max.frontpatcher.apply(applycollect);
 
@@ -217,16 +215,14 @@ function alignhorz()
 		{
 			for (objs = 0 ; objs < (objarray.length - 1) ; objs++)
 			{
-				newpos[X1] = objarray[objs].obj.rect[X1] + deltax;
-				newpos[Y1] = objarray[objs+1].obj.rect[Y1];
-				newpos[X2] = objarray[objs].obj.rect[X1] + deltax + objarray[objs+1].width;
-				newpos[Y2] = objarray[objs+1].obj.rect[Y2];
-			
-				objarray[objs+1].obj.rect = newpos;
+				newpos[X1] = objarray[objs].obj.getattr(patching_mode)[X1] + deltax;
+				newpos[Y1] = objarray[objs+1].obj.getattr(patching_mode)[Y1];
+				newpos[X2] = objarray[objs+1].obj.getattr(patching_mode)[X2];
+				newpos[Y2] = objarray[objs+1].obj.getattr(patching_mode)[Y2];
+				
+				objarray[objs+1].obj.message(patching_mode,newpos);
 			}
 		}
-		//delta_glob_x = deltax - objarray[0].width;
-		//displayspace(max.frontpatcher);
 	}
 	else if (!max.frontpatcher.locked)
 		post(NOTSELECTED);
@@ -234,34 +230,11 @@ function alignhorz()
 	clean_up();
 }
 
-/*function displayspace(patcher)
-{
-		patcher.wind.title = "Space x : " + Math.round(delta_glob_x) + "    Space y : " + Math.round(delta_glob_y);
-}*/
-
-/*function restoretitle()
-{
-	if (max.version < "455")
-		var tempo = 1;
-	else
-		var tempo = max.shiftkeydown == 0 && max.ctrlkeydown == 0 && max.optionkeydown == 0 && max.cmdkeydown == 0;
-		
-		if (tempo && titletemp_patcher != undefined)
-		{
-			titletemp_patcher.wind.title = titletemp;
-			delta_glob_x = 0;
-			delta_glob_y = 0;
-		}
-}*/
-
 function alignvert()
 {
 	var deltay = 0;
 	var objs = 0;
 	var newpos = new Array();
-	if (arguments.length == 0 && g.distxy != 1)
-		titletemp = max.frontpatcher.wind.title;
-	titletemp_patcher = max.frontpatcher;
 	
 	max.frontpatcher.apply(applycollect);
 
@@ -282,14 +255,12 @@ function alignvert()
 			{
 				newpos[X1] = objarray[objs+1].obj.rect[X1];
 				newpos[Y1] = objarray[objs].obj.rect[Y1] + deltay;
-				newpos[X2] = objarray[objs+1].obj.rect[X2];
-				newpos[Y2] = objarray[objs].obj.rect[Y1] + deltay + objarray[objs+1].height;
+				newpos[X2] = objarray[objs+1].width;
+				newpos[Y2] = objarray[objs+1].height;
 				
-				objarray[objs+1].obj.rect = newpos;
+				objarray[objs+1].obj.message(patching_mode,newpos);
 			}
 		}
-		//delta_glob_y = deltay - objarray[0].height;
-		//displayspace(max.frontpatcher);
 	}
 	else if (!max.frontpatcher.locked)
 		post(NOTSELECTED);
