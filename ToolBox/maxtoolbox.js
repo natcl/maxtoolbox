@@ -1,7 +1,6 @@
 autowatch = 1;
-
-if (max.version < "454")
-	post("Max ToolBox : Your version of Max/MSP needs to be at least 4.5.4, please update it.\n");
+if (max.version < "502")
+	post("Max ToolBox : Your version of Max/MSP needs to be at least 5.0.2, please update it.\n");
 else
 	post("Max ToolBox Version b12-dev by Nathanaël Lécaudé\n");
 
@@ -198,6 +197,11 @@ function alignhorz()
 	var objs = 0;
 	var newpos = new Array();
 	
+	if (max.frontpatcher.getattr("presentation") == 1)
+		patching_mode = "presentation_rect"
+	else
+		patching_mode = "patching_rect"
+	
 	max.frontpatcher.apply(applycollect);
 
 	if (valid)
@@ -213,14 +217,27 @@ function alignhorz()
 		
 		if (deltax > 0)
 		{
-			for (objs = 0 ; objs < (objarray.length - 1) ; objs++)
+			if (patching_mode == "presentation_rect")
 			{
-				newpos[X1] = objarray[objs].obj.getattr(patching_mode)[X1] + deltax;
-				newpos[Y1] = objarray[objs+1].obj.getattr(patching_mode)[Y1];
-				newpos[X2] = objarray[objs+1].obj.getattr(patching_mode)[X2];
-				newpos[Y2] = objarray[objs+1].obj.getattr(patching_mode)[Y2];
-				
-				objarray[objs+1].obj.message(patching_mode,newpos);
+				for (objs = 0 ; objs < (objarray.length - 1) ; objs++)
+				{
+					newpos[X1] = objarray[objs].obj.rect[X1] + deltax;
+					newpos[Y1] = objarray[objs+1].obj.rect[Y1];
+					newpos[X2] = objarray[objs+1].width;
+					newpos[Y2] = objarray[objs+1].height;
+					objarray[objs+1].obj.message(patching_mode,newpos);
+				}
+			}
+			else
+			{
+				for (objs = 0 ; objs < (objarray.length - 1) ; objs++)
+				{
+					newpos[X1] = objarray[objs].obj.rect[X1] + deltax;
+					newpos[Y1] = objarray[objs+1].obj.rect[Y1];
+					newpos[X2] = objarray[objs].obj.rect[X1] + deltax + objarray[objs+1].width;
+					newpos[Y2] = objarray[objs+1].obj.rect[Y2];
+					objarray[objs+1].obj.rect = newpos;
+				}
 			}
 		}
 	}
@@ -235,6 +252,11 @@ function alignvert()
 	var deltay = 0;
 	var objs = 0;
 	var newpos = new Array();
+	
+	if (max.frontpatcher.getattr("presentation") == 1)
+		patching_mode = "presentation_rect"
+	else
+		patching_mode = "patching_rect"
 	
 	max.frontpatcher.apply(applycollect);
 
@@ -251,14 +273,27 @@ function alignvert()
 
 		if (deltay > 0)
 		{
-			for (objs = 0 ; objs < (objarray.length - 1) ; objs++)
+			if (patching_mode == "presentation_rect")
 			{
-				newpos[X1] = objarray[objs+1].obj.rect[X1];
-				newpos[Y1] = objarray[objs].obj.rect[Y1] + deltay;
-				newpos[X2] = objarray[objs+1].width;
-				newpos[Y2] = objarray[objs+1].height;
-				
-				objarray[objs+1].obj.message(patching_mode,newpos);
+				for (objs = 0 ; objs < (objarray.length - 1) ; objs++)
+				{
+					newpos[X1] = objarray[objs+1].obj.rect[X1];
+					newpos[Y1] = objarray[objs].obj.rect[Y1] + deltay;
+					newpos[X2] = objarray[objs+1].width;
+					newpos[Y2] = objarray[objs+1].height;
+					objarray[objs+1].obj.message(patching_mode,newpos);
+				}
+			}
+			else
+			{
+				for (objs = 0 ; objs < (objarray.length - 1) ; objs++)
+				{
+					newpos[X1] = objarray[objs+1].obj.rect[X1];
+					newpos[Y1] = objarray[objs].obj.rect[Y1] + deltay;
+					newpos[X2] = objarray[objs+1].obj.rect[X2];
+					newpos[Y2] = objarray[objs].obj.rect[Y1] + deltay + objarray[objs+1].height;
+					objarray[objs+1].obj.rect = newpos;
+				}
 			}
 		}
 	}
