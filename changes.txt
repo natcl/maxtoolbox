@@ -1,0 +1,5 @@
+﻿Max ToolBox - Release notes
+
+Version b12
+
+* Distribute (x and y) now works in presentation mode
