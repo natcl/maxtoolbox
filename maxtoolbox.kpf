@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Komodo Project File - DO NOT EDIT -->
-<project id="5c82e9b3-d1b6-b84c-b439-2af765794adf" kpf_version="4" name="maxtoolbox.kpf">
-<preference-set idref="5c82e9b3-d1b6-b84c-b439-2af765794adf">
+<project id="74d36daf-53e5-4d00-a9ed-541402a51d01" kpf_version="4" name="maxtoolbox.kpf">
+<file id="8395d2d4-82ac-4cca-a885-d48394c8523f" idref="74d36daf-53e5-4d00-a9ed-541402a51d01" name="maxtoolbox.kpf" url="maxtoolbox.kpf">
+</file>
+<preference-set idref="74d36daf-53e5-4d00-a9ed-541402a51d01">
   <boolean id="import_live">1</boolean>
 </preference-set>
 </project>
