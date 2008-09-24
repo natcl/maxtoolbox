@@ -2,38 +2,34 @@ autowatch = 1;
 
 var initpath;
 var initpath_sub;
-var f;
+var f, tf;
 var toolbox = null;
 var thispatch = null;
 
 function anything()
 {
-	initpath = messagename;
-	initpath_sub = initpath.substring(0,initpath.indexOf("max-fontmappings.txt"));
+	initpath = messagename + "/";
 }
 
 function create_file()
 {
-	f = new File(initpath_sub + "toolbox-start.txt" , "write");
+	tf = new File("toolbox_start.txt","read");
+	f = new File(initpath + "toolbox-start.maxpat" , "write");
 	
-	f.writeline("max v2;");
-	f.writeline("#N vpatcher 0 0 0 0;");
-	f.writeline("#P window setfont \"Sans Serif\" 9.;");
-	f.writeline("#P message 86 94 42 196617 dispose;");
-	f.writeline("#N thispatcher;");
-	f.writeline("#Q end;");
-	f.writeline("#P newobj 86 123 60 196617 thispatcher;");
-	f.writeline("#P message 150 94 141 196617 shroud maxtoolbox.maxpat \, close; #P newex 150 63 45 196617 loadbang; #P newex 150 123 45 196617 pcontrol; #P connect 1 0 4 0; #P connect 4 0 3 0; #P connect 1 0 2 0; #P connect 2 0 0 0; #P pop;");
+	f.writebytes(tf.readbytes(tf.eof));
 	
 	f.close();
+	tf.close();
 }
 
 function clear_file()
 {
-	f = new File(initpath_sub + "toolbox-start.txt", "write");
-	
-	for (var i = 0 ; i < 4 ; i++)
-		f.writeline("                                                                                                      ");
+	f = new File(initpath + "toolbox-start.maxpat", "write");
+	post(f);
+	for (var i = 0 ; i < 120 ; i++)
+	{
+		f.writeline("                                                         ");
+	}
 
 	f.close();
 }

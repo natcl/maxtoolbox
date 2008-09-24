@@ -2080,7 +2080,7 @@
 , 			{
 				"box" : 				{
 					"maxclass" : "newobj",
-					"text" : "loadmess max-fontmappings.txt",
+					"text" : "loadmess max-startup",
 					"numoutlets" : 1,
 					"id" : "obj-61",
 					"outlettype" : [ "" ],

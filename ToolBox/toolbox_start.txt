@@ -1,0 +1,120 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"rect" : [ 0.0, 43.0, 521.0, 252.0 ],
+		"bglocked" : 0,
+		"defrect" : [ 0.0, 43.0, 521.0, 252.0 ],
+		"openrect" : [ 0.0, 0.0, 0.0, 0.0 ],
+		"openinpresentation" : 0,
+		"default_fontsize" : 10.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 0,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 0,
+		"toolbarvisible" : 1,
+		"boxanimatetime" : 200,
+		"imprint" : 0,
+		"metadata" : [  ],
+		"boxes" : [ 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "r mtb_patch_close",
+					"fontsize" : 10.0,
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"patching_rect" : [ 205.0, 95.0, 92.0, 18.0 ],
+					"fontname" : "Arial",
+					"id" : "obj-3",
+					"outlettype" : [ "" ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "message",
+					"text" : "window size 0 0 0 0, window exec",
+					"fontsize" : 11.595187,
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"patching_rect" : [ 154.0, 65.0, 185.0, 18.0 ],
+					"fontname" : "Arial",
+					"id" : "obj-5",
+					"outlettype" : [ "" ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "loadbang",
+					"fontsize" : 10.0,
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"patching_rect" : [ 153.0, 39.0, 52.0, 18.0 ],
+					"fontname" : "Arial",
+					"id" : "obj-4",
+					"outlettype" : [ "bang" ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "thispatcher",
+					"fontsize" : 10.0,
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"patching_rect" : [ 75.0, 93.0, 59.0, 18.0 ],
+					"fontname" : "Arial",
+					"id" : "obj-2",
+					"outlettype" : [ "", "" ],
+					"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"maxclass" : "newobj",
+					"text" : "maxtoolbox.maxpat",
+					"fontsize" : 10.0,
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patching_rect" : [ 28.0, 14.0, 97.0, 18.0 ],
+					"fontname" : "Arial",
+					"id" : "obj-1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"source" : [ "obj-3", 0 ],
+					"destination" : [ "obj-2", 0 ],
+					"hidden" : 0,
+					"midpoints" : [  ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-4", 0 ],
+					"destination" : [ "obj-5", 0 ],
+					"hidden" : 0,
+					"midpoints" : [ 162.5, 57.0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"source" : [ "obj-5", 0 ],
+					"destination" : [ "obj-2", 0 ],
+					"hidden" : 0,
+					"midpoints" : [  ]
+				}
+
+			}
+ ]
+	}
+
+}
