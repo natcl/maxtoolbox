@@ -25,7 +25,7 @@ function create_file()
 function clear_file()
 {
 	f = new File(initpath + "toolbox-start.maxpat", "write");
-	for (var i = 0 ; i < 120 ; i++)
+	for (var i = 0 ; i < 139 ; i++)
 	{
 		f.writeline("                                                         ");
 	}

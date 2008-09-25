@@ -3,6 +3,8 @@
 <project id="74d36daf-53e5-4d00-a9ed-541402a51d01" kpf_version="4" name="maxtoolbox.kpf">
 <file id="8395d2d4-82ac-4cca-a885-d48394c8523f" idref="74d36daf-53e5-4d00-a9ed-541402a51d01" name="maxtoolbox.kpf" url="maxtoolbox.kpf">
 </file>
+<file id="d37f2cc3-6f82-4b0b-892c-95f714f4bb5a" idref="74d36daf-53e5-4d00-a9ed-541402a51d01" name="toolbox_config.js" url="ToolBox/toolbox_config.js">
+</file>
 <preference-set idref="74d36daf-53e5-4d00-a9ed-541402a51d01">
   <boolean id="import_live">1</boolean>
 </preference-set>
