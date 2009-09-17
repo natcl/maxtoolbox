@@ -2,7 +2,7 @@ autowatch = 1;
 if (max.version < "502")
 	post("Max ToolBox : Your version of Max/MSP needs to be at least 5.0.2, please update it.\n");
 else
-	post("Max ToolBox Version b13-dev by Nathanaël Lécaudé\n");
+	post("Max ToolBox Version b14-dev by Nathanaël Lécaudé\n");
 
 // Constantes
 const X1 = 0;
@@ -43,13 +43,6 @@ g.in_offset = 1;
 g.out_offset = 1;
 g.num_connec = 1;
 g.distxy = 0;  //Vérifie si X et Y sont pesé en même temps.
-
-max.definecommand('I','patcher', 'insertobj');
-max.definecommand('R','patcher', 'insertobj');
-max.definecommand('C','patcher', 'insertobj');
-max.definecommand('N','patcher', 'insertobj');
-max.definecommand('O','patcher', 'insertobj');
-
 
 function clean_up()
 {
