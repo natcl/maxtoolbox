@@ -1,4 +1,9 @@
-﻿Max ToolBox - Release notes
+Max ToolBox - Release notes
+
+Version 14
+
+* Revamped the shortcut system, it's now possible to change all shortcuts and the letter (not the ascii code) must be entered in the mtb_shortcuts.txt file
+* Replaced the custom shell (shift-r function) by Max's dialog object.
 
 Version b13
 
