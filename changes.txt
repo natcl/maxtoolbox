@@ -4,7 +4,7 @@
 (to be released)
 
   * Reworked colors in the help patch to make it compatible with object defaults (thanks to Pascal Baltazar)
-  * Revamped the shortcut system, it's now possible to change all shortcuts and the letter (not the ascii code) must be entered in the mtb_shortcuts.txt file
+  * Revamped the shortcut system, it's now possible to change all shortcuts and the letter. (not the ascii code) must be entered in the mtb_shortcuts.txt file, this should fix some compatibility issues with other third party packages.
   * Replaced the custom shell (shift-r function) by Max's dialog object.
 
 ==Version b13==
