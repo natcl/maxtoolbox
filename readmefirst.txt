@@ -6,4 +6,4 @@ To install the ToolBox
 To re-install/update the ToolBox
 
 1 - Make sure you delete all files related to the ToolBox
-2 - Install as described abve.
+2 - Install as described above.
