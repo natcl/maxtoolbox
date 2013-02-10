@@ -1,4 +1,3 @@
-syntax: glob
 *~
 *.swp
 *.DS_Store
