@@ -19,6 +19,7 @@ var compteur = 0;
 var compteur_shell = 0;
 var valid = false;
 var objarray = new Array();
+var undo_objarray = new Array();
 
 var temp_patch; // Variable temporaire servant à stocker Frontpatcher
 var patching_mode = "patching_rect";
@@ -118,6 +119,7 @@ function send()
 
 function applycollect(b)
 {
+	undo_objarray = new Array();
 	if (b.selected)
 	{
 		objarray[compteur] = { obj:b , xpos1:b.rect[X1] , ypos1:b.rect[Y1] , xpos2:b.rect[X2] , ypos2:b.rect[Y2] , width:b.rect[X2]-b.rect[X1], height:b.rect[Y2]-b.rect[Y1] };
@@ -353,6 +355,7 @@ function connect_cascade()
 			for (var n = 0 ; n < g.num_connec ; n++) //Pour chaque entrée/sortie
 			{
 				temp_patch.connect(objarray[objs].obj, n + g.out_offset-1,objarray[objs + 1].obj, n + g.in_offset-1);
+				undo_objarray.push([objarray[objs].obj, n + g.out_offset-1,objarray[objs + 1].obj, n + g.in_offset-1]);
 			}
 		}
 	}
@@ -435,34 +438,46 @@ function connect_row_to_object()
 		switch (rowchoice)
 		{
 			case "rs" :
-			for (objs in high_array)
+			for (objs in high_array){
 				temp_patch.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[0], parseInt(objs) + g.in_offset-1);
+				undo_objarray.push([high_array[objs] , 0 + g.out_offset-1 , low_array[0], parseInt(objs) + g.in_offset-1]);
+			}
 			break;
 			
 			case "sr" :
 			if (low_array.length >= 1 && high_array.length >= 1)
-				for (objs in low_array)
+				for (objs in low_array){
 					temp_patch.connect(high_array[0] , parseInt(objs) + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
+					undo_objarray.push([high_array[0] , parseInt(objs) + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1]);
+				}
 			break;
 			
 			case "rr" :
 			if (high_array.length < low_array.length || high_array.length == low_array.length)
-				for (objs in high_array)
+				for (objs in high_array){
 					temp_patch.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
+					undo_objarray.push([high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1]);
+				}
 			else
-				for (objs in low_array)
+				for (objs in low_array){
 					temp_patch.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
+					undo_objarray.push([high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1]);
+				}
 			break;
 			
 			case "sm" :
 			if (low_array.length >= 1 && high_array.length >= 1)
-				for (objs in low_array)
+				for (objs in low_array){
 					temp_patch.connect(high_array[0] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
+					undo_objarray.push([high_array[0] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1]);
+				}
 			break;				
 			
 			case "ms" :
-			for (objs in high_array)
+			for (objs in high_array){
 				temp_patch.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[0] , 0 + g.in_offset-1);
+				undo_objarray.push([high_array[objs] , 0 + g.out_offset-1 , low_array[0] , 0 + g.in_offset-1]);
+			}
 			break;
 		}
 	}
@@ -470,6 +485,19 @@ function connect_row_to_object()
 		post(NOTSELECTED);
 		
 	clean_up();
+}
+
+function undo()
+{
+	presend();
+	if (!temp_patch.locked)
+	{
+		for (var obj in undo_objarray)
+		{
+			temp_patch.disconnect(undo_objarray[obj][0], undo_objarray[obj][1], undo_objarray[obj][2], undo_objarray[obj][3]);
+		}
+		undo_objarray = new Array();
+	}
 }
 
 function change_name()
@@ -519,103 +547,6 @@ function change_name()
 		post(NOTSELECTED);
 
 	clean_up();
-}
-
-function putobject(object)
-{
-	temp_patch = max.frontpatcher;
-	var ctrlobject;
-	
-	temp_patch.apply(applycollect);
-	
-	if (max.version < "455")
-		var tempo = 1;
-	else
-		var tempo = max.shiftkeydown == 0 && max.ctrlkeydown == 0 && max.optionkeydown == 0;
-	
-	if (tempo)
-	{
-		if (valid && compteur == 1 && g.deltatime && g.mouse_y > objarray[0].ypos1)
-		{
-			//ctrlobject = temp_patch.newdefault(g.mouse_x, g.mouse_y, object);
-			ctrlobject = newdefault_temp(object);
-			temp_patch.connect(objarray[0].obj , g.out_offset - 1 , ctrlobject , g.in_offset - 1);
-		}
-		else if (valid && compteur == 1 && g.deltatime && g.mouse_y < objarray[0].ypos1)
-		{
-			//ctrlobject = temp_patch.newdefault(g.mouse_x, g.mouse_y, object);
-			ctrlobject = newdefault_temp(object);
-			temp_patch.connect(ctrlobject , g.out_offset - 1 , objarray[0].obj , g.in_offset - 1);
-		}	
-		else
-			//temp_patch.newdefault(g.mouse_x, g.mouse_y, object);
-			newdefault_temp(object);
-	}
-	clean_up();
-}
-
-function newdefault_temp(object)
-{
-	temp_patch = max.frontpatcher;
-	var temp_object;
-	
-	switch (object)
-	{
-		case "bpatcher" :
-		temp_object = temp_patch.newobject("bpatcher", g.mouse_x, g.mouse_y,100,100,0,0,0);
-		return temp_object;
-		break;
-		
-		case "comment" :
-		temp_object = temp_patch.newobject("comment", g.mouse_x, g.mouse_y,100,196617);
-		return temp_object;
-		break;
-		
-		case "button" :
-		temp_object = temp_patch.newobject("button", g.mouse_x, g.mouse_y,15,0);
-		return temp_object;
-		break;
-		
-		case "flonum" :
-		temp_object = temp_patch.newobject("flonum", g.mouse_x, g.mouse_y,35,9,0,0,0,3,0,0,0,221,221,221,222,222,222,0,0,0);
-		return temp_object;
-		break;
-		
-		case "inlet" :
-		temp_object = temp_patch.newobject("inlet", g.mouse_x, g.mouse_y,15,0);
-		return temp_object;
-		break;
-		
-		case "message" :
-		temp_object = temp_patch.newobject("message", g.mouse_x, g.mouse_y,50,196617);
-		return temp_object;
-		break;
-		
-		case "outlet" :
-		temp_object = temp_patch.newobject("outlet", g.mouse_x, g.mouse_y,15,0);
-		return temp_object;
-		break;
-		
-		case "number" :
-		temp_object = temp_patch.newobject("number", g.mouse_x, g.mouse_y,35,9,0,0,0,3,0,0,0,221,221,221,222,222,222,0,0,0);
-		return temp_object;
-		break;
-		
-		case "preset" :
-		temp_object = temp_patch.newobject("preset", g.mouse_x, g.mouse_y,47,27);
-		return temp_object;
-		break;
-		
-		case "toggle" :
-		temp_object = temp_patch.newobject("toggle", g.mouse_x, g.mouse_y,15,0);
-		return temp_object;
-		break;
-		
-		default :
-		temp_object = temp_patch.newdefault(g.mouse_x, g.mouse_y, object);
-		return temp_object;
-	}
-	
 }
 
 notifydeleted.local = 1;
