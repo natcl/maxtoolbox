@@ -568,7 +568,6 @@ function parse_patcher(){
     var parsed_patcher = JSON.parse(lines);
 
 	var boxes = parsed_patcher["patcher"]["boxes"];
-	post(boxes[0]);post();
 	for (var box in boxes){
 		post("Inlets: " + boxes[box]["box"]["numinlets"]);
 		post("Outlets: " + boxes[box]["box"]["numoutlets"]);
