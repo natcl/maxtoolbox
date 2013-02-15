@@ -19,7 +19,7 @@ To re-install/update the ToolBox
 
 #Contact me
 
-You can contact me on [Twitter](https://twitter.com/natcl) or by email: maxtoolbox [æt] studioimaginaire.com
+You can contact me on [Twitter](https://twitter.com/natcl) or by email: maxtoolbox [at] studioimaginaire.com
 
 ##Donations
 
