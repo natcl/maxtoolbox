@@ -17,6 +17,10 @@ To re-install/update the ToolBox
 1. Make sure you delete all files related to the ToolBox
 2. Install as described above.
 
+#Contact me
+
+You can contact me on [Twitter](https://twitter.com/natcl) or by email: maxtoolbox [æt] studioimaginaire.com
+
 ##Donations
 
 Donations are always appreciated.  [Thanks !](http://www.studioimaginaire.com/surfaceone/donate.html)
