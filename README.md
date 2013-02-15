@@ -2,8 +2,8 @@
 
 ##Downloads
 
-[Max 5 and 6](https://code.google.com/p/maxtoolbox/downloads/detail?name=maxtoolbox_14_max5.zip&can=2&q=)  
-[Max 4](https://code.google.com/p/maxtoolbox/downloads/detail?name=maxtoolbox_b8_max4.zip&can=2&q=)
+[Max 5 and 6](https://maxtoolbox.googlecode.com/files/maxtoolbox_14_max5.zip)  
+[Max 4](https://maxtoolbox.googlecode.com/files/maxtoolbox_b8_max4.zip)
 
 ##Installation
 
