@@ -1,5 +1,10 @@
 #Max ToolBox : A plugin for Max/MSP to help you patch faster.
 
+##Downloads
+
+[https://code.google.com/p/maxtoolbox/downloads/detail?name=maxtoolbox_14_max5.zip&can=2&q=](Max 5 and 6)
+[https://code.google.com/p/maxtoolbox/downloads/detail?name=maxtoolbox_b8_max4.zip&can=2&q=](Max 4)
+
 ##Installation
 
 1. Place the ToolBox folder in one of your search path (Easiest is in "Cycling' 74")
