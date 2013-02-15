@@ -14,3 +14,7 @@ To re-install/update the ToolBox
 
 1. Make sure you delete all files related to the ToolBox
 2. Install as described above.
+
+##Donations
+
+Donations are always appreciated.  [Thanks !](http://www.studioimaginaire.com/surfaceone/donate.html)
