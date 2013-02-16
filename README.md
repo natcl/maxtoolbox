@@ -24,3 +24,5 @@ You can contact me on [Twitter](https://twitter.com/natcl) or by email: maxtoolb
 ##Donations
 
 Donations are always appreciated.  [Thanks !](http://www.studioimaginaire.com/surfaceone/donate.html)
+
+<a href='http://www.studioimaginaire.com/surfaceone/donate.html'><img alt='Click here to lend your support to: Max ToolBox !' src='https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif' border='0' /></a>
