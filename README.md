@@ -24,10 +24,3 @@ You can contact me on [Twitter](https://twitter.com/natcl) or by email: maxtoolb
 ##Donations
 
 Donations are always appreciated.  [Thanks !](http://www.studioimaginaire.com/surfaceone/donate.html)
-
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="J7UL3BXGKEWHL">
-<input type="image" src="https://www.paypalobjects.com/fr_CA/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
-<img alt="" border="0" src="https://www.paypalobjects.com/fr_CA/i/scr/pixel.gif" width="1" height="1">
-</form>
