@@ -13,6 +13,7 @@ const Y2 = 3;
 // Messages d'erreurs
 const NOTSELECTED = "Max ToolBox : No objects are selected, please select something and try again.\n";
 const ARG_MISMATCH = "Max ToolBox : Error : The number of arguments doesn't match the number of selected objects.\n";
+const NOT_SAVED = "Max ToolBox : Please save patcher to use this function\n";
 
 // Variables globales
 var compteur = 0;
@@ -547,6 +548,31 @@ function change_name()
 		post(NOTSELECTED);
 
 	clean_up();
+}
+
+function parse_patcher(){
+
+	if (max.frontpatcher.filepath == ""){
+		post(NOT_SAVED);
+		return;
+	}
+
+	var lines = new String();
+	var patcher_file = new File(max.frontpatcher.filepath);
+
+	while (patcher_file.position != patcher_file.eof){
+		lines += patcher_file.readline();
+	}
+	patcher_file.close();
+
+    var parsed_patcher = JSON.parse(lines);
+
+	var boxes = parsed_patcher["patcher"]["boxes"];
+	for (var box in boxes){
+		post("Inlets: " + boxes[box]["box"]["numinlets"]);
+		post("Outlets: " + boxes[box]["box"]["numoutlets"]);
+		post();
+	}
 }
 
 notifydeleted.local = 1;
