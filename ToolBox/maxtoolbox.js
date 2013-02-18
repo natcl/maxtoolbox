@@ -119,7 +119,7 @@ function send()
 
 function applycollect(b)
 {
-	undo_objarray = new Array();
+	undo_objarray = new Array(); // TODO: Move this elsewhere
 	if (b.selected)
 	{
 		objarray[compteur] = { obj:b , xpos1:b.rect[X1] , ypos1:b.rect[Y1] , xpos2:b.rect[X2] , ypos2:b.rect[Y2] , width:b.rect[X2]-b.rect[X1], height:b.rect[Y2]-b.rect[Y1] };
@@ -354,7 +354,7 @@ function connect_cascade()
 		{
 			for (var n = 0 ; n < g.num_connec ; n++) //Pour chaque entrée/sortie
 			{
-				temp_patch.connect(objarray[objs].obj, n + g.out_offset-1,objarray[objs + 1].obj, n + g.in_offset-1);
+				objarray[objs].obj.patcher.connect(objarray[objs].obj, n + g.out_offset-1,objarray[objs + 1].obj, n + g.in_offset-1);
 				undo_objarray.push([objarray[objs].obj, n + g.out_offset-1,objarray[objs + 1].obj, n + g.in_offset-1]);
 			}
 		}
@@ -439,7 +439,7 @@ function connect_row_to_object()
 		{
 			case "rs" :
 			for (objs in high_array){
-				temp_patch.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[0], parseInt(objs) + g.in_offset-1);
+				high_array[objs].patcher.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[0], parseInt(objs) + g.in_offset-1);
 				undo_objarray.push([high_array[objs] , 0 + g.out_offset-1 , low_array[0], parseInt(objs) + g.in_offset-1]);
 			}
 			break;
@@ -447,7 +447,7 @@ function connect_row_to_object()
 			case "sr" :
 			if (low_array.length >= 1 && high_array.length >= 1)
 				for (objs in low_array){
-					temp_patch.connect(high_array[0] , parseInt(objs) + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
+					low_array[objs].patcher.connect(high_array[0] , parseInt(objs) + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
 					undo_objarray.push([high_array[0] , parseInt(objs) + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1]);
 				}
 			break;
@@ -455,12 +455,12 @@ function connect_row_to_object()
 			case "rr" :
 			if (high_array.length < low_array.length || high_array.length == low_array.length)
 				for (objs in high_array){
-					temp_patch.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
+					high_array[objs].patcher.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
 					undo_objarray.push([high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1]);
 				}
 			else
 				for (objs in low_array){
-					temp_patch.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
+					low_array[objs].patcher.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
 					undo_objarray.push([high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1]);
 				}
 			break;
@@ -468,14 +468,14 @@ function connect_row_to_object()
 			case "sm" :
 			if (low_array.length >= 1 && high_array.length >= 1)
 				for (objs in low_array){
-					temp_patch.connect(high_array[0] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
+					low_array[objs].patcher.connect(high_array[0] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
 					undo_objarray.push([high_array[0] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1]);
 				}
 			break;				
 			
 			case "ms" :
 			for (objs in high_array){
-				temp_patch.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[0] , 0 + g.in_offset-1);
+				high_array[objs].patcher.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[0] , 0 + g.in_offset-1);
 				undo_objarray.push([high_array[objs] , 0 + g.out_offset-1 , low_array[0] , 0 + g.in_offset-1]);
 			}
 			break;
@@ -494,7 +494,7 @@ function undo()
 	{
 		for (var obj in undo_objarray)
 		{
-			temp_patch.disconnect(undo_objarray[obj][0], undo_objarray[obj][1], undo_objarray[obj][2], undo_objarray[obj][3]);
+			undo_objarray[obj][0].patcher.disconnect(undo_objarray[obj][0], undo_objarray[obj][1], undo_objarray[obj][2], undo_objarray[obj][3]);
 		}
 		undo_objarray = new Array();
 	}
