@@ -2,6 +2,7 @@
  
 ## Version 15 - dev
 
+* Changed folder structure, now packages compatible
 * General code cleanup
 * New undo function (press z) 
 
