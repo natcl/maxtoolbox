@@ -3,8 +3,9 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 6,
-			"minor" : 0,
-			"revision" : 8
+			"minor" : 1,
+			"revision" : 0,
+			"architecture" : "x86"
 		}
 ,
 		"rect" : [ 125.0, 168.0, 659.0, 521.0 ],
@@ -38,8 +39,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 0,
+							"architecture" : "x86"
 						}
 ,
 						"rect" : [ 25.0, 69.0, 196.0, 201.0 ],
@@ -243,11 +245,12 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 0,
+							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 934.0, 466.0, 536.0, 312.0 ],
+						"rect" : [ 744.0, 466.0, 536.0, 312.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 10.0,
@@ -278,8 +281,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 6,
-											"minor" : 0,
-											"revision" : 8
+											"minor" : 1,
+											"revision" : 0,
+											"architecture" : "x86"
 										}
 ,
 										"rect" : [ 25.0, 69.0, 408.0, 256.0 ],
@@ -339,7 +343,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 112.0, 136.0, 225.0, 32.0 ],
+													"patching_rect" : [ 112.0, 136.0, 225.0, 31.0 ],
 													"text" : ";\rmax definecommand $1 patcher nothing"
 												}
 
@@ -460,8 +464,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 6,
-											"minor" : 0,
-											"revision" : 8
+											"minor" : 1,
+											"revision" : 0,
+											"architecture" : "x86"
 										}
 ,
 										"rect" : [ 309.0, 385.0, 290.0, 206.0 ],
@@ -1310,8 +1315,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 0,
+							"architecture" : "x86"
 						}
 ,
 						"rect" : [ 15.0, 54.0, 504.0, 450.0 ],
@@ -1388,8 +1394,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 6,
-											"minor" : 0,
-											"revision" : 8
+											"minor" : 1,
+											"revision" : 0,
+											"architecture" : "x86"
 										}
 ,
 										"rect" : [ 25.0, 69.0, 640.0, 480.0 ],
@@ -1481,8 +1488,9 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 6,
-															"minor" : 0,
-															"revision" : 8
+															"minor" : 1,
+															"revision" : 0,
+															"architecture" : "x86"
 														}
 ,
 														"rect" : [ 393.0, 307.0, 142.0, 128.0 ],
@@ -2107,8 +2115,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 6,
-											"minor" : 0,
-											"revision" : 8
+											"minor" : 1,
+											"revision" : 0,
+											"architecture" : "x86"
 										}
 ,
 										"rect" : [ 50.0, 94.0, 640.0, 480.0 ],
@@ -2298,8 +2307,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 6,
-											"minor" : 0,
-											"revision" : 8
+											"minor" : 1,
+											"revision" : 0,
+											"architecture" : "x86"
 										}
 ,
 										"rect" : [ 210.0, 230.0, 420.0, 231.0 ],
@@ -2371,8 +2381,9 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 6,
-															"minor" : 0,
-															"revision" : 8
+															"minor" : 1,
+															"revision" : 0,
+															"architecture" : "x86"
 														}
 ,
 														"rect" : [ 15.0, 130.0, 1014.0, 188.0 ],
@@ -3284,8 +3295,9 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 0,
+							"architecture" : "x86"
 						}
 ,
 						"rect" : [ 648.0, 441.0, 428.0, 307.0 ],
@@ -3320,8 +3332,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 6,
-											"minor" : 0,
-											"revision" : 8
+											"minor" : 1,
+											"revision" : 0,
+											"architecture" : "x86"
 										}
 ,
 										"rect" : [ 15.0, 55.0, 308.0, 325.0 ],
@@ -3649,8 +3662,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 6,
-											"minor" : 0,
-											"revision" : 8
+											"minor" : 1,
+											"revision" : 0,
+											"architecture" : "x86"
 										}
 ,
 										"rect" : [ 147.0, 305.0, 115.0, 233.0 ],
@@ -3959,8 +3973,9 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 6,
-											"minor" : 0,
-											"revision" : 8
+											"minor" : 1,
+											"revision" : 0,
+											"architecture" : "x86"
 										}
 ,
 										"rect" : [ 15.0, 55.0, 308.0, 325.0 ],
@@ -4624,11 +4639,12 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 6,
-							"minor" : 0,
-							"revision" : 8
+							"minor" : 1,
+							"revision" : 0,
+							"architecture" : "x86"
 						}
 ,
-						"rect" : [ 771.0, 361.0, 808.0, 534.0 ],
+						"rect" : [ 472.0, 361.0, 808.0, 534.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 10.0,
@@ -4739,8 +4755,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 146.0, 272.0, 63.0, 20.0 ],
-									"text" : "s pw_num"
+									"patching_rect" : [ 146.0, 272.0, 70.0, 20.0 ],
+									"text" : "s mtb_num"
 								}
 
 							}
@@ -4752,8 +4768,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 84.0, 272.0, 57.0, 20.0 ],
-									"text" : "s pw_out"
+									"patching_rect" : [ 84.0, 272.0, 63.0, 20.0 ],
+									"text" : "s mtb_out"
 								}
 
 							}
@@ -4765,8 +4781,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 30.0, 272.0, 49.0, 20.0 ],
-									"text" : "s pw_in"
+									"patching_rect" : [ 30.0, 272.0, 56.0, 20.0 ],
+									"text" : "s mtb_in"
 								}
 
 							}
@@ -4780,7 +4796,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 263.0, 229.0, 120.0, 32.0 ],
+									"patching_rect" : [ 263.0, 229.0, 120.0, 31.0 ],
 									"text" : ";\rglob num_connec $1"
 								}
 
@@ -4795,7 +4811,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 143.0, 229.0, 143.0, 32.0 ],
+									"patching_rect" : [ 143.0, 229.0, 143.0, 31.0 ],
 									"text" : ";\rglob out_offset $1"
 								}
 
@@ -4810,7 +4826,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 30.0, 229.0, 132.0, 32.0 ],
+									"patching_rect" : [ 30.0, 229.0, 132.0, 31.0 ],
 									"text" : ";\rglob in_offset $1"
 								}
 
@@ -5307,15 +5323,15 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "maxtoolbox.js",
-				"bootpath" : "/nethome/nlecaude/Source/maxtoolbox/ToolBox",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/Nat/Source/maxtoolbox/ToolBox",
+				"patcherrelativepath" : "./",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "mtb_shortcuts.txt",
-				"bootpath" : "/nethome/nlecaude/Source/maxtoolbox/ToolBox",
-				"patcherrelativepath" : "",
+				"bootpath" : "/Users/Nat/Source/maxtoolbox/ToolBox",
+				"patcherrelativepath" : "./",
 				"type" : "TEXT",
 				"implicit" : 1
 			}

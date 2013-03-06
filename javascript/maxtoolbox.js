@@ -45,6 +45,12 @@ g.in_offset = 1;
 g.out_offset = 1;
 g.num_connec = 1;
 g.distxy = 0;  //Vérifie si X et Y sont pesé en même temps.
+g.loaded = 1;
+
+function loaded()
+{
+	g.sendnamed("mtb_loaded","loaded");
+}
 
 function clean_up()
 {
@@ -57,9 +63,9 @@ function clean_up()
 	g.in_offset = 1;
 	g.out_offset = 1;
 	g.num_connec = 1;
-	g.sendnamed("pw_in","in_offset");
-	g.sendnamed("pw_out","out_offset");
-	g.sendnamed("pw_num","num_connec");
+	g.sendnamed("mtb_in","in_offset");
+	g.sendnamed("mtb_out","out_offset");
+	g.sendnamed("mtb_num","num_connec");
 }
 
 function gather_io(arguments)
