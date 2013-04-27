@@ -1,6 +1,7 @@
 # Max ToolBox - CHANGELOG
  
-## Version 15 - dev
+## Version 15
+April 27th, 2013
 
 * Changed folder structure, now packages compatible
 * General code cleanup
