@@ -11,5 +11,6 @@
 	"link_mac32": "https://github.com/natcl/maxtoolbox/archive/Version15.zip",
 	"link_mac64": "https://github.com/natcl/maxtoolbox/archive/Version15.zip",
 	"link_win32": "https://github.com/natcl/maxtoolbox/archive/Version15.zip",
-	"link_win64": "https://github.com/natcl/maxtoolbox/archive/Version15.zip"
+	"link_win64": "https://github.com/natcl/maxtoolbox/archive/Version15.zip",
+	"relative_path": "None"
 }
