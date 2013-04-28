@@ -7,6 +7,8 @@
 	"major_version": "15",
 	"minor_version": "0",
 	"min_max_version": "502",
+	"min_osx_version": "None",
+	"min_win_version": "None",
 	"website": "https://github.com/natcl/maxtoolbox",
 	"link_mac32": "https://github.com/natcl/maxtoolbox/archive/Version15.zip",
 	"link_mac64": "https://github.com/natcl/maxtoolbox/archive/Version15.zip",
