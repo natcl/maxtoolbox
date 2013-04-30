@@ -5,15 +5,15 @@ else
 	post("Max ToolBox Version 16-dev by Nathanaël Lécaudé\n");
 
 // Constantes
-const X1 = 0;
-const Y1 = 1;
-const X2 = 2;
-const Y2 = 3;
+var X1 = 0;
+var Y1 = 1;
+var X2 = 2;
+var Y2 = 3;
 
 // Messages d'erreurs
-const NOTSELECTED = "Max ToolBox : No objects are selected, please select something and try again.\n";
-const ARG_MISMATCH = "Max ToolBox : Error : The number of arguments doesn't match the number of selected objects.\n";
-const NOT_SAVED = "Max ToolBox : Please save patcher to use this function\n";
+var NOTSELECTED = "Max ToolBox : No objects are selected, please select something and try again.\n";
+var ARG_MISMATCH = "Max ToolBox : Error : The number of arguments doesn't match the number of selected objects.\n";
+var NOT_SAVED = "Max ToolBox : Please save patcher to use this function\n";
 
 // Variables globales
 var compteur = 0;
