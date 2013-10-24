@@ -11,7 +11,7 @@ The Max ToolBox is a tool that simplifies some aspects of patching within the Ma
 
 ###For Max 6.1 and newer
 
-Unzip the Toolbox folder in your packages folder located in ~/Documents/Max/Packages
+Unzip the Toolbox folder in your packages folder located in ```~/Documents/Max/Packages```
 
 ###For Max 6 and older
 
