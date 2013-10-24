@@ -9,10 +9,16 @@ The Max ToolBox is a tool that simplifies some aspects of patching within the Ma
 
 ##Installation
 
+###For Max 6.1 and newer
+
+Unzip the Toolbox folder in your packages folder located in ~/Documents/Max/Packages
+
+###For Max 6 and older
+
 1. Place the ToolBox folder in one of your search path (Easiest is in "Cycling' 74")
 2. Place the ToolBox.maxpat file in your extras folder
 
-To re-install/update the ToolBox
+###To re-install/update the ToolBox
 
 1. Make sure you delete all files related to the ToolBox
 2. Install as described above.
