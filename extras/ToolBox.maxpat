@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 0,
+			"revision" : 6,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 576.0, 70.0, 197.0, 145.0 ],
+		"openrect" : [ 749.0, 46.0, 197.0, 145.0 ],
 		"bgcolor" : [ 0.34902, 0.34902, 0.501961, 0.74902 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -131,7 +131,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 697.0, 458.0, 76.0, 20.0 ],
+					"patching_rect" : [ 673.0, 464.0, 76.0, 20.0 ],
 					"text" : "s mtb_close"
 				}
 
@@ -145,7 +145,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 548.0, 435.0, 156.0, 18.0 ],
+					"patching_rect" : [ 524.0, 441.0, 156.0, 18.0 ],
 					"text" : "shroud maxtoolbox.maxpat"
 				}
 
@@ -159,7 +159,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 548.0, 458.0, 54.0, 20.0 ],
+					"patching_rect" : [ 524.0, 464.0, 54.0, 20.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -279,7 +279,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 0,
+							"revision" : 6,
 							"architecture" : "x86"
 						}
 ,
@@ -2238,28 +2238,7 @@
 
 			}
  ],
-		"dependency_cache" : [ 			{
-				"name" : "toolbox_config.js",
-				"bootpath" : "/Users/Nat/Source/maxtoolbox/ToolBox",
-				"patcherrelativepath" : "./maxtoolbox/ToolBox",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "toolboxhelp.maxhelp",
-				"bootpath" : "/Users/Nat/Source/maxtoolbox/help",
-				"patcherrelativepath" : "./maxtoolbox/help",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "mtb_shortcuts.txt",
-				"bootpath" : "/Users/Nat/Source/maxtoolbox/ToolBox",
-				"patcherrelativepath" : "./maxtoolbox/ToolBox",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
- ]
+		"dependency_cache" : [  ]
 	}
 
 }
