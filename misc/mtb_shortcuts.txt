@@ -11,4 +11,4 @@ y, vd "vetical distribution";
 I, ii "define inlet";
 O, oo "define outlet";
 N, nn "define number of connections";
-z, undo "undo connections";
+u, undo "undo connections";
