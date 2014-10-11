@@ -518,7 +518,7 @@
 																	"numoutlets" : 1,
 																	"outlettype" : [ "" ],
 																	"patching_rect" : [ 227.0, 176.0, 158.0, 18.0 ],
-																	"text" : "read max-keycommands.txt"
+																	"text" : "read C74:/init/max-keycommands.txt"
 																}
 
 															}
