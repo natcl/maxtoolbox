@@ -4,6 +4,7 @@ The Max ToolBox is a tool that simplifies some aspects of patching within the Ma
 
 ##Downloads
 
+[Max 7](https://github.com/natcl/maxtoolbox/archive/master.zip)  
 [Max 5 and 6](https://github.com/natcl/maxtoolbox/archive/Version15.zip)  
 [Max 4](https://maxtoolbox.googlecode.com/files/maxtoolbox_b8_max4.zip)
 
