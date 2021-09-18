@@ -1,8 +1,19 @@
 autowatch = 1;
+
 if (max.version < "502")
 	post("Max ToolBox : Your version of Max/MSP needs to be at least 5.0.2, please update it.\n");
 else
 	post("Max ToolBox Version 16-dev by Nathanaël Lécaudé\n");
+
+// DEBUG FLAG
+var DEBUG = true;
+
+function log(a){
+	if (DEBUG){
+		post(a);
+		post('\n');
+	}
+}
 
 // Constantes
 var X1 = 0;
@@ -115,6 +126,7 @@ function applysend(a)
 
 function presend()
 {
+	// get the patcher that is currently in front
 	temp_patch = max.frontpatcher;
 }
 
@@ -400,6 +412,8 @@ function pre_row()
 
 function connect_row_to_object()
 {
+	// log('row-to-object()');
+
 	if (!gather_io(arguments))
 		return;
 	
@@ -414,17 +428,29 @@ function connect_row_to_object()
 	
 	temp_patch.apply(applycollect);
 	
-	if (valid)
-	{
-		for (var objs in objarray)
-		{
+	if (valid){
+		var lowObj;
+		var highObj;
+		var max = 0;
+		var min = Infinity;
+
+		for (var objs in objarray){
 			array_ypos[objs] = objarray[objs].ypos1;
+
+			if (objarray[objs].ypos1 > max){
+				lowObj = objarray[objs];
+				max = lowObj.ypos1;
+			}
+			if (objarray[objs].ypos1 < min){
+				highObj = objarray[objs];
+				min = highObj.ypos1;
+			}
 		}
 		
 		low_obj = findmax(array_ypos);
 		high_obj = findmin(array_ypos);
 		middle_pos = (low_obj - high_obj) / 2 + high_obj;
-		
+
 		for (objs in objarray)
 		{
 			if (objarray[objs].ypos1 < middle_pos)
@@ -472,18 +498,27 @@ function connect_row_to_object()
 				}
 			break;
 			
+			// connect all lower objects to the highest object 
+			// first inlet, instead of splitting selected objects in
+			// half as in original implementation
 			case "sm" :
-			if (low_array.length >= 1 && high_array.length >= 1)
-				for (objs in low_array){
-					low_array[objs].patcher.connect(high_array[0] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
-					undo_objarray.push([high_array[0] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1]);
+			for (objs in objarray){
+				if (objarray[objs].ypos1 !== highObj.ypos1){
+					objarray[objs].obj.patcher.connect(highObj.obj, 0 + g.out_offset-1, objarray[objs].obj, 0 + g.in_offset-1);
+					undo_objarray.push([highObj.obj, 0 + g.out_offset-1, objarray[objs].obj, 0 + g.in_offset-1]);
 				}
+			}
 			break;				
 			
+			// connect all higher objects to the lowest object 
+			// first inlet, instead of splitting selected objects in
+			// half as in original implementation
 			case "ms" :
-			for (objs in high_array){
-				high_array[objs].patcher.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[0] , 0 + g.in_offset-1);
-				undo_objarray.push([high_array[objs] , 0 + g.out_offset-1 , low_array[0] , 0 + g.in_offset-1]);
+			for (objs in objarray){
+				if (objarray[objs].ypos1 !== lowObj.ypos1){
+					objarray[objs].obj.patcher.connect(objarray[objs].obj, 0 + g.out_offset-1, lowObj.obj, 0 + g.in_offset-1);
+					undo_objarray.push([objarray[objs].obj, 0 + g.out_offset-1, lowObj.obj, 0 + g.in_offset-1]);
+				}
 			}
 			break;
 		}
