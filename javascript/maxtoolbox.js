@@ -3,7 +3,7 @@ autowatch = 1;
 if (max.version < "502")
 	post("Max ToolBox : Your version of Max/MSP needs to be at least 5.0.2, please update it.\n");
 else
-	post("Max ToolBox Version 16-dev by Nathanaël Lécaudé\n");
+	post("Max ToolBox v.17 - by Nathanaël Lécaudé, updated by Timo Hoogland\n");
 
 // DEBUG FLAG
 var DEBUG = true;
