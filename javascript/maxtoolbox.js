@@ -431,19 +431,19 @@ function connect_row_to_object()
 	if (valid){
 		var lowObj;
 		var highObj;
-		var max = 0;
-		var min = Infinity;
+		var hi = 0;
+		var lo = Infinity;
 
 		for (var objs in objarray){
 			array_ypos[objs] = objarray[objs].ypos1;
 
-			if (objarray[objs].ypos1 > max){
+			if (objarray[objs].ypos1 > hi){
 				lowObj = objarray[objs];
-				max = lowObj.ypos1;
+				hi = lowObj.ypos1;
 			}
-			if (objarray[objs].ypos1 < min){
+			if (objarray[objs].ypos1 < lo){
 				highObj = objarray[objs];
-				min = highObj.ypos1;
+				lo = highObj.ypos1;
 			}
 		}
 		
@@ -451,15 +451,12 @@ function connect_row_to_object()
 		high_obj = findmin(array_ypos);
 		middle_pos = (low_obj - high_obj) / 2 + high_obj;
 
-		for (objs in objarray)
-		{
-			if (objarray[objs].ypos1 < middle_pos)
-			{
+		for (objs in objarray){
+			if (objarray[objs].ypos1 < middle_pos){
 				high_array[i] = objarray[objs].obj;
 				i++;
 			}
-			else
-			{
+			else{
 				low_array[k] = objarray[objs].obj;
 				k++;
 			}
@@ -468,8 +465,7 @@ function connect_row_to_object()
 		high_array.sort(alignsortrow);
 		low_array.sort(alignsortrow);
 		
-		switch (rowchoice)
-		{
+		switch (rowchoice){
 			case "rs" :
 			for (objs in high_array){
 				high_array[objs].patcher.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[0], parseInt(objs) + g.in_offset-1);
