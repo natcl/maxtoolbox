@@ -37,7 +37,8 @@ var undo_objarray = [];
 
 // Variable temporaire servant à stocker Frontpatcher
 var temp_patch; 
-var patching_mode = "patching_rect";
+// var patching_mode = "patching_rect";
+var patching_mode = true;
 
 // Variable contenant les arguemnts à envoyer à la fonction send
 var argtosend = [];  
@@ -217,119 +218,91 @@ function findmin(maxarray)
 	return minimum;
 }
 
-function alignhorz()
+function alignhorz(mouseX)
 {
 	if (max.frontpatcher.locked){
 		return;
 	}
-
-	var deltax = 0;
-	var objs = 0;
-	var newpos = new Array();
-	
-	if (max.frontpatcher.getattr("presentation") == 1)
-		patching_mode = "presentation_rect"
-	else
-		patching_mode = "patching_rect"
-	
+	// is patching mode or presentation mode? 1/0
+	patching_mode = !max.frontpatcher.getattr("presentation");
+	// collect selected objects
 	max.frontpatcher.apply(applycollect);
-
+	// return if less than 2 objects are selected
 	if (objarray.length < 2){
-		post(NOTSELECTED);
 		return;
 	}
-
+	// sort on x and y axis
 	objarray.sort(alignsortx);
-	deltax = (objarray[objarray.length-1].xpos1 - objarray[0].xpos1) / (objarray.length-1);
+	objarray.sort(alignsorty);
 	
-	if (arguments.length == 0)
-		delta_offset_x = deltax - g.mouse_x;
-		
-	if (arguments.length > 0)
-		deltax = arguments[0] + delta_offset_x;
-	
-	if (deltax > 0)
-	{
-		if (patching_mode == "presentation_rect")
-		{
-			for (objs = 0 ; objs < (objarray.length - 1) ; objs++)
-			{
-				newpos[X1] = objarray[objs].obj.rect[X1] + deltax;
-				newpos[Y1] = objarray[objs+1].obj.rect[Y1];
-				newpos[X2] = objarray[objs+1].width;
-				newpos[Y2] = objarray[objs+1].height;
-				objarray[objs+1].obj.message(patching_mode,newpos);
-			}
-		}
-		else
-		{
-			for (objs = 0 ; objs < (objarray.length - 1) ; objs++)
-			{
-				newpos[X1] = objarray[objs].obj.rect[X1] + deltax;
-				newpos[Y1] = objarray[objs+1].obj.rect[Y1];
-				newpos[X2] = objarray[objs].obj.rect[X1] + deltax + objarray[objs+1].width;
-				newpos[Y2] = objarray[objs+1].obj.rect[Y2];
-				objarray[objs+1].obj.rect = newpos;
-			}
-		}
+	var newpos = [];
+	// width of total objects is mouseX - 1st object - window posX
+	var width = Math.max(0, mouseX - objarray[0].obj.rect[X1] - max.frontpatcher.wind.location[X1]);
+	// distance between object is width divided by total objects
+	var deltax = width / objarray.length;
+
+	if (patching_mode){
+		// adjust if in patching mode
+		for (var i=1; i<objarray.length; i++){	
+			newpos[X1] = objarray[0].obj.rect[X1] + deltax * i;
+			newpos[X2] = objarray[i].width + newpos[X1];
+			newpos[Y1] = objarray[i].obj.rect[Y1];
+			newpos[Y2] = objarray[i].obj.rect[Y2];
+			objarray[i].obj.rect = newpos;
+		} 	
+	} else {
+		// adjust if in presentation mode
+		for (var i=1; i<objarray.length; i++){	
+			newpos[X1] = objarray[0].obj.rect[X1] + deltax * i;
+			newpos[X2] = objarray[i].width;
+			newpos[Y1] = objarray[i].obj.rect[Y1];
+			newpos[Y2] = objarray[i].height;
+			objarray[i].obj.message("presentation_rect", newpos);
+		} 	
 	}
 	clean_up();
 }
 
-function alignvert()
+function alignvert(mouseY)
 {
 	if (max.frontpatcher.locked){
 		return;
 	}
-
-	var deltay = 0;
-	var objs = 0;
-	var newpos = new Array();
-	
-	if (max.frontpatcher.getattr("presentation") == 1)
-		patching_mode = "presentation_rect"
-	else
-		patching_mode = "patching_rect"
-	
+	// is patching mode or presentation mode? 1/0
+	patching_mode = !max.frontpatcher.getattr("presentation");
+	// collect selected objects
 	max.frontpatcher.apply(applycollect);
-
+	// return if less than 2 objects are selected
 	if (objarray.length < 2){
-		post(NOTSELECTED);
 		return;
 	}
-
+	// sort on x and y axis
+	objarray.sort(alignsortx);
 	objarray.sort(alignsorty);
-	deltay = (objarray[objarray.length-1].ypos1 - objarray[0].ypos1) / (objarray.length-1);
+	
+	var newpos = [];
+	// width of total objects is mouseX - 1st object - window posY
+	var height = Math.max(0, mouseY - objarray[0].obj.rect[Y1] - max.frontpatcher.wind.location[Y1]);
+	// distance between object is height divided by total objects
+	var deltay = height / (objarray.length);
 
-	if (arguments.length == 0)
-		delta_offset_y = deltay - g.mouse_y;
-		
-	if (arguments.length > 0)
-		deltay = arguments[0] + delta_offset_y;
-
-	if (deltay > 0)
-	{
-		if (patching_mode == "presentation_rect")
-		{
-			for (objs = 0 ; objs < (objarray.length - 1) ; objs++)
-			{
-				newpos[X1] = objarray[objs+1].obj.rect[X1];
-				newpos[Y1] = objarray[objs].obj.rect[Y1] + deltay;
-				newpos[X2] = objarray[objs+1].width;
-				newpos[Y2] = objarray[objs+1].height;
-				objarray[objs+1].obj.message(patching_mode,newpos);
-			}
+	if (patching_mode){
+		// adjust if in patching mode
+		for (var i=1; i<objarray.length; i++){
+			newpos[X1] = objarray[i].obj.rect[X1];
+			newpos[X2] = objarray[i].obj.rect[X2];
+			newpos[Y1] = objarray[0].obj.rect[Y1] + deltay * i;
+			newpos[Y2] = objarray[i].height + newpos[Y1];
+			objarray[i].obj.rect = newpos;
 		}
-		else
-		{
-			for (objs = 0 ; objs < (objarray.length - 1) ; objs++)
-			{
-				newpos[X1] = objarray[objs+1].obj.rect[X1];
-				newpos[Y1] = objarray[objs].obj.rect[Y1] + deltay;
-				newpos[X2] = objarray[objs+1].obj.rect[X2];
-				newpos[Y2] = objarray[objs].obj.rect[Y1] + deltay + objarray[objs+1].height;
-				objarray[objs+1].obj.rect = newpos;
-			}
+	} else {
+		// adjust if in presentation mode
+		for (var i=1; i<objarray.length; i++){
+			newpos[X1] = objarray[i].obj.rect[X1];
+			newpos[X2] = objarray[i].width;
+			newpos[Y1] = objarray[0].obj.rect[Y1] + deltay * i;
+			newpos[Y2] = objarray[i].height;
+			objarray[i].obj.message("presentation_rect", newpos);
 		}
 	}
 	clean_up();
@@ -337,6 +310,7 @@ function alignvert()
 
 function connect_single_to_single()
 {
+	// return if the patcher is locked
 	if (max.frontpatcher.locked){
 		return;
 	}
@@ -382,6 +356,7 @@ function connect_single_to_single()
 
 function connect_cascade()
 {
+	// return if the patcher is locked
 	if (!gather_io(arguments) || max.frontpatcher.locked){
 		return;
 	}
@@ -439,6 +414,7 @@ function pre_row()
 
 function connect_row_to_object()
 {
+	// return if the patcher is locked
 	if (!gather_io(arguments) || max.frontpatcher.locked){
 		return;
 	}	
