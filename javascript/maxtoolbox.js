@@ -377,6 +377,11 @@ function connect_cascade()
 		
 	temp_patch.apply(applycollect);
 
+	if (objarray.length < 2){
+		post(NOTSELECTED);
+		return;
+	}
+	
 	if (valid)
 	{
 		objarray.sort(alignsorty);
@@ -431,127 +436,104 @@ function connect_row_to_object()
 	if (!gather_io(arguments)){
 		return;
 	}	
+
 	temp_patch.apply(applycollect);
 	
 	if (objarray.length < 2){
 		post(NOTSELECTED);
 		return;
 	}
+
+	// sort object vertically
+	objarray.sort(alignsorty);
+	// store .obj direction into array
+	for (objs in objarray){
+		objarray[objs] = objarray[objs].obj;
+	}
 	
 	if (valid){
 		switch (rowchoice){
+			// connect all objects to lowest object
 			case "rs" :
-			for (objs in objarray){
-				objarray[objs] = objarray[objs].obj;
-			}
-			// sort object vertically
-			// remove lowest object
-			objarray.sort(alignsortcol);
-			var lowObj = objarray.pop();
-			// resort objects horizontally
-			objarray.sort(alignsortrow);
-			// connect all objects to lowest object per inlet
-			for (objs in objarray){
-				objarray[objs].patcher.connect(objarray[objs] , 0 + g.out_offset-1 , lowObj, parseInt(objs) + g.in_offset-1);
-				undo_objarray.push([objarray[objs] , 0 + g.out_offset-1 , lowObj, parseInt(objs) + g.in_offset-1]);
-			}
-			break;
+				// remove lowest object
+				var lowObj = objarray.pop();
+				// resort objects horizontally
+				objarray.sort(alignsortrow);
+				// connect
+				for (objs in objarray){
+					objarray[objs].patcher.connect(objarray[objs] , 0 + g.out_offset-1 , lowObj, parseInt(objs) + g.in_offset-1);
+					undo_objarray.push([objarray[objs] , 0 + g.out_offset-1 , lowObj, parseInt(objs) + g.in_offset-1]);
+				}
+				break;
 			
+			// connect all objects to highest object
 			case "sr" :
-			for (objs in objarray){
-				objarray[objs] = objarray[objs].obj;
-			}
-			// sort objects vertically
-			// remove highest object
-			objarray.sort(alignsortcol);
-			var highObj = objarray.shift();
-			// resort objects horizontally
-			objarray.sort(alignsortrow);
-			// connect all objects to highest object per inlet
-			for (objs in objarray){
-				objarray[objs].patcher.connect(highObj, parseInt(objs) + g.out_offset-1, objarray[objs], 0 + g.in_offset-1);
-				undo_objarray.push([highObj, parseInt(objs) + g.out_offset-1, objarray[objs], 0 + g.in_offset-1]);
-			}
-			break;
+				// remove highest object
+				var highObj = objarray.shift();
+				// resort objects horizontally
+				objarray.sort(alignsortrow);
+				// connect
+				for (objs in objarray){
+					objarray[objs].patcher.connect(highObj, parseInt(objs) + g.out_offset-1, objarray[objs], 0 + g.in_offset-1);
+					undo_objarray.push([highObj, parseInt(objs) + g.out_offset-1, objarray[objs], 0 + g.in_offset-1]);
+				}
+				break;
 			
 			case "rr" :
-			if ((objarray.length % 2) != 0){
-				post(UNEVEN);
-			}
-			// store. obj direction in array
-			for (objs in objarray){
-				objarray[objs] = objarray[objs].obj;
-			}
-
-			// sort vertical objects
-			var vertSort = objarray;
-			vertSort.sort(alignsortcol);
-			
-			// split top and bottom
-			var topArr = vertSort.slice(0, vertSort.length/2);
-			var btmArr = vertSort.slice(vertSort.length/2, vertSort.length);
-			
-			// sort horizontal objects
-			topArr.sort(alignsortrow);
-			btmArr.sort(alignsortrow);
-			
-			for (objs in topArr){
-				topArr[objs].patcher.connect(topArr[objs] , 0 + g.out_offset-1 , btmArr[objs] , 0 + g.in_offset-1);
-				undo_objarray.push([topArr[objs] , 0 + g.out_offset-1 , btmArr[objs] , 0 + g.in_offset-1]);
-			}
-			break;
+				if ((objarray.length % 2) != 0){
+					post(UNEVEN);
+				}
+				// split top and bottom
+				var topArr = objarray.slice(0, objarray.length/2);
+				var btmArr = objarray.slice(objarray.length/2, objarray.length);
+				// sort horizontal objects
+				topArr.sort(alignsortrow);
+				btmArr.sort(alignsortrow);
+				// connect
+				for (objs in topArr){
+					topArr[objs].patcher.connect(topArr[objs] , 0 + g.out_offset-1 , btmArr[objs] , 0 + g.in_offset-1);
+					undo_objarray.push([topArr[objs] , 0 + g.out_offset-1 , btmArr[objs] , 0 + g.in_offset-1]);
+				}
+				break;
 			
 			// connect all lower objects to the highest object 
 			// first inlet, instead of splitting selected objects in
 			// half as in original implementation
 			case "sm" :
-			// sort objects vertically
-			objarray.sort(alignsorty);
-			// store .obj direct in array
-			for (objs in objarray){
-				objarray[objs] = objarray[objs].obj;
-			}
-			// remove highest object
-			var highObj = objarray.shift();
-			for (objs in objarray){
-				objarray[objs].patcher.connect(highObj, 0+g.out_offset-1, objarray[objs], 0+g.in_offset-1);
-				undo_objarray.push([highObj, 0+g.out_offset-1, objarray[objs], 0+g.in_offset-1]);
-			}
-			break;				
+				// remove highest object
+				var highObj = objarray.shift();
+				// connect
+				for (objs in objarray){
+					objarray[objs].patcher.connect(highObj, 0 + g.out_offset-1, objarray[objs], 0 + g.in_offset-1);
+					undo_objarray.push([highObj, 0 + g.out_offset-1, objarray[objs], 0 + g.in_offset-1]);
+				}
+				break;				
 			
 			// connect all higher objects to the lowest object 
 			// first inlet, instead of splitting selected objects in
 			// half as in original implementation
 			case "ms" :
-			// sort objects vertically
-			objarray.sort(alignsorty);
-			// store .obj direct in array
-			for (objs in objarray){
-				objarray[objs] = objarray[objs].obj;
-			}
-			// remove lowest object
-			var lowObj = objarray.pop();
-			for (objs in objarray){
-				objarray[objs].patcher.connect(objarray[objs], 0+g.out_offset-1, lowObj, 0+g.in_offset-1);
-				undo_objarray.push([objarray[objs], 0+g.out_offset-1, lowObj, 0+g.in_offset-1]);
-			}
-			break;
-			
+				// remove lowest object
+				var lowObj = objarray.pop();
+				// connect
+				for (objs in objarray){
+					objarray[objs].patcher.connect(objarray[objs], 0 + g.out_offset-1, lowObj, 0 + g.in_offset-1);
+					undo_objarray.push([objarray[objs], 0 + g.out_offset-1, lowObj, 0 + g.in_offset-1]);
+				}
+				break;
+				
 			// experimental
 			// connects all outlets from one object to all inlets
 			// from another object below it
 			case "io" :
-			if (objarray.length !== 2){
-				post(SELECTTWO);
-				return;
-			}
-			for (objs in objarray){
-				objarray[objs] = objarray[objs].obj;
-			}
-			objarray.sort(alignsortcol);
-			for (var i=0; i<10; i++){
-				objarray[0].patcher.connect(objarray[0], i+g.out_offset-1, objarray[1], i+g.in_offset-1)
-			}
+				if (objarray.length !== 2){
+					post(SELECTTWO);
+					return;
+				}
+
+				for (var i=0; i<10; i++){
+					objarray[0].patcher.connect(objarray[0], i + g.out_offset-1, objarray[1], i + g.in_offset-1)
+				}
 		}
 	}
 	else if (!max.frontpatcher.locked)
