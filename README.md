@@ -14,12 +14,9 @@ The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP
 - custom connections via shell-style interface
 
 ![](media/screenshot.png)
-
-## Downloads
-
-[Max 7/8](https://github.com/tmhglnd/maxtoolbox/archive/refs/heads/master.zip)  
-
 ## Install (Max 7+)
+
+[Max 7/8](https://github.com/tmhglnd/maxtoolbox/archive/refs/heads/master.zip)
 
 ```
 1. download latest code zip
