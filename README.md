@@ -46,12 +46,6 @@ The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP
 1. Place the ToolBox folder in one of your search path (Easiest is in "Cycling' 74")
 2. Place the ToolBox.maxpat file in your extras folder
 
-## Contact me
+<!-- ## Contact me -->
 
-You can contact me on [Twitter](https://twitter.com/natcl) or by email: maxtoolbox [at] studioimaginaire.com
-
-## Donations
-
-Donations are always appreciated.  [Thanks !](http://www.studioimaginaire.com/surfaceone/donate.html)
-
-<a href='http://www.studioimaginaire.com/surfaceone/donate.html'><img alt='Click here to lend your support to: Max ToolBox !' src='https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif' border='0' /></a>
+<!-- You can contact me on [Twitter](https://twitter.com/natcl) or by email: maxtoolbox [at] studioimaginaire.com -->
