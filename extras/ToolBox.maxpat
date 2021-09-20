@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 2,
-			"revision" : 0,
+			"minor" : 1,
+			"revision" : 11,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -136,8 +136,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 12.0, 84.346153000000001, 59.0, 20.0 ],
 					"text" : "Shortcuts",
-					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-					"textjustification" : 0
+					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
 
 			}
@@ -294,8 +293,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 2,
-							"revision" : 0,
+							"minor" : 1,
+							"revision" : 11,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1710,7 +1709,7 @@
 					"bgcolor" : [ 0.368627, 0.360784, 0.501961, 0.74902 ],
 					"bgcolor2" : [ 0.368627, 0.360784, 0.501961, 0.74902 ],
 					"bgfillcolor_angle" : 270.0,
-					"bgfillcolor_autogradient" : 0.79,
+					"bgfillcolor_autogradient" : 0.0,
 					"bgfillcolor_color" : [ 0.19999997317791, 0.199999943375587, 0.19999997317791, 1.0 ],
 					"bgfillcolor_color1" : [ 0.368627, 0.360784, 0.501961, 0.74902 ],
 					"bgfillcolor_color2" : [ 0.685, 0.685, 0.685, 1.0 ],
@@ -1893,8 +1892,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 12.0, 53.346153000000001, 59.0, 20.0 ],
 					"text" : "Activate",
-					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-					"textjustification" : 0
+					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
 
 			}

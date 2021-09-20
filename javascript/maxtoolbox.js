@@ -5,16 +5,6 @@ if (max.version < "502")
 else
 	post("Max ToolBox v.17 - by Nathanaël Lécaudé, updated by Timo Hoogland\n");
 
-// DEBUG FLAG
-var DEBUG = true;
-
-function log(a){
-	if (DEBUG){
-		post(a);
-		post('\n');
-	}
-}
-
 // Constantes
 var X1 = 0;
 var Y1 = 1;
