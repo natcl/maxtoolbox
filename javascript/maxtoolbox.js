@@ -22,23 +22,28 @@ var X2 = 2;
 var Y2 = 3;
 
 // Messages d'erreurs
-var NOTSELECTED = "Max ToolBox : No objects are selected, please select something and try again.\n";
+var NOTSELECTED = "Max ToolBox : Less than 2 objects are selected, please select more and try again.\n";
 var ARG_MISMATCH = "Max ToolBox : Error : The number of arguments doesn't match the number of selected objects.\n";
 var NOT_SAVED = "Max ToolBox : Please save patcher to use this function\n";
+var SELECTTWO = "Max ToolBox : Select only 2 objects to connect.\n"
+var UNEVEN = "Max ToolBox : Uneven amount of objects selected, ignoring last object.\n"
 
 // Variables globales
 var compteur = 0;
 var compteur_shell = 0;
 var valid = false;
-var objarray = new Array();
-var undo_objarray = new Array();
+var objarray = [];
+var undo_objarray = [];
 
-var temp_patch; // Variable temporaire servant à stocker Frontpatcher
+// Variable temporaire servant à stocker Frontpatcher
+var temp_patch; 
 var patching_mode = "patching_rect";
 
-var argtosend = new Array();  // Variable contenant les arguemnts à envoyer à la fonction send
+// Variable contenant les arguemnts à envoyer à la fonction send
+var argtosend = [];  
 
-var rowchoice; // Variable servant à stocker le choix du type de connexion
+// Variable servant à stocker le choix du type de connexion
+var rowchoice; 
 
 var delta_offset_x = 0;
 var delta_offset_y = 0;
@@ -178,9 +183,16 @@ function alignsorty(a,b)
 
 function alignsortrow(a,b)
 {
-        if (a.rect[X1] < b.rect[X1]) return -1;
-        else if (a.rect[X1] > b.rect[X1]) return 1;
-        else return 0;
+	if (a.rect[X1] < b.rect[X1]) return -1;
+	else if (a.rect[X1] > b.rect[X1]) return 1;
+	else return 0;
+}
+
+function alignsortcol(a,b)
+{
+	if (a.rect[Y1] < b.rect[Y1]) return -1;
+	else if (a.rect[Y1] > b.rect[Y2]) return 1;
+	else return 0;
 }
 
 function findmax(maxarray)
@@ -407,102 +419,103 @@ function pre_row()
 		case "ms" :
 		rowchoice = arguments[0];
 		break;
+
+		case "io" :
+		rowchoice = arguments[0];
+		break;
 	}
 }
 
 function connect_row_to_object()
 {
-	// log('row-to-object()');
-
-	if (!gather_io(arguments))
+	if (!gather_io(arguments)){
 		return;
-	
-	var array_ypos = new Array();
-	var high_obj = 0;
-	var low_obj = 0;
-	var low_array = new Array();
-	var high_array = new Array();
-	var middle_pos;
-	var i = 0;
-	var k = 0;
-	
+	}	
 	temp_patch.apply(applycollect);
 	
+	if (objarray.length < 2){
+		post(NOTSELECTED);
+		return;
+	}
+	
 	if (valid){
-		var lowObj;
-		var highObj;
-		var hi = 0;
-		var lo = Infinity;
-
-		for (var objs in objarray){
-			array_ypos[objs] = objarray[objs].ypos1;
-
-			if (objarray[objs].ypos1 > hi){
-				lowObj = objarray[objs];
-				hi = lowObj.ypos1;
-			}
-			if (objarray[objs].ypos1 < lo){
-				highObj = objarray[objs];
-				lo = highObj.ypos1;
-			}
-		}
-		
-		low_obj = findmax(array_ypos);
-		high_obj = findmin(array_ypos);
-		middle_pos = (low_obj - high_obj) / 2 + high_obj;
-
-		for (objs in objarray){
-			if (objarray[objs].ypos1 < middle_pos){
-				high_array[i] = objarray[objs].obj;
-				i++;
-			}
-			else{
-				low_array[k] = objarray[objs].obj;
-				k++;
-			}
-		}
-		
-		high_array.sort(alignsortrow);
-		low_array.sort(alignsortrow);
-		
 		switch (rowchoice){
 			case "rs" :
-			for (objs in high_array){
-				high_array[objs].patcher.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[0], parseInt(objs) + g.in_offset-1);
-				undo_objarray.push([high_array[objs] , 0 + g.out_offset-1 , low_array[0], parseInt(objs) + g.in_offset-1]);
+			for (objs in objarray){
+				objarray[objs] = objarray[objs].obj;
+			}
+			// sort object vertically
+			// remove lowest object
+			objarray.sort(alignsortcol);
+			var lowObj = objarray.pop();
+			// resort objects horizontally
+			objarray.sort(alignsortrow);
+			// connect all objects to lowest object per inlet
+			for (objs in objarray){
+				objarray[objs].patcher.connect(objarray[objs] , 0 + g.out_offset-1 , lowObj, parseInt(objs) + g.in_offset-1);
+				undo_objarray.push([objarray[objs] , 0 + g.out_offset-1 , lowObj, parseInt(objs) + g.in_offset-1]);
 			}
 			break;
 			
 			case "sr" :
-			if (low_array.length >= 1 && high_array.length >= 1)
-				for (objs in low_array){
-					low_array[objs].patcher.connect(high_array[0] , parseInt(objs) + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
-					undo_objarray.push([high_array[0] , parseInt(objs) + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1]);
-				}
+			for (objs in objarray){
+				objarray[objs] = objarray[objs].obj;
+			}
+			// sort objects vertically
+			// remove highest object
+			objarray.sort(alignsortcol);
+			var highObj = objarray.shift();
+			// resort objects horizontally
+			objarray.sort(alignsortrow);
+			// connect all objects to highest object per inlet
+			for (objs in objarray){
+				objarray[objs].patcher.connect(highObj, parseInt(objs) + g.out_offset-1, objarray[objs], 0 + g.in_offset-1);
+				undo_objarray.push([highObj, parseInt(objs) + g.out_offset-1, objarray[objs], 0 + g.in_offset-1]);
+			}
 			break;
 			
 			case "rr" :
-			if (high_array.length < low_array.length || high_array.length == low_array.length)
-				for (objs in high_array){
-					high_array[objs].patcher.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
-					undo_objarray.push([high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1]);
-				}
-			else
-				for (objs in low_array){
-					low_array[objs].patcher.connect(high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1);
-					undo_objarray.push([high_array[objs] , 0 + g.out_offset-1 , low_array[objs] , 0 + g.in_offset-1]);
-				}
+			if ((objarray.length % 2) != 0){
+				post(UNEVEN);
+			}
+			// store. obj direction in array
+			for (objs in objarray){
+				objarray[objs] = objarray[objs].obj;
+			}
+
+			// sort vertical objects
+			var vertSort = objarray;
+			vertSort.sort(alignsortcol);
+			
+			// split top and bottom
+			var topArr = vertSort.slice(0, vertSort.length/2);
+			var btmArr = vertSort.slice(vertSort.length/2, vertSort.length);
+			
+			// sort horizontal objects
+			topArr.sort(alignsortrow);
+			btmArr.sort(alignsortrow);
+			
+			for (objs in topArr){
+				topArr[objs].patcher.connect(topArr[objs] , 0 + g.out_offset-1 , btmArr[objs] , 0 + g.in_offset-1);
+				undo_objarray.push([topArr[objs] , 0 + g.out_offset-1 , btmArr[objs] , 0 + g.in_offset-1]);
+			}
 			break;
 			
 			// connect all lower objects to the highest object 
 			// first inlet, instead of splitting selected objects in
 			// half as in original implementation
 			case "sm" :
+			// sort objects vertically
+			objarray.sort(alignsorty);
+			// store .obj direct in array
 			for (objs in objarray){
-				if (objarray[objs].ypos1 !== highObj.ypos1){
-					objarray[objs].obj.patcher.connect(highObj.obj, 0 + g.out_offset-1, objarray[objs].obj, 0 + g.in_offset-1);
-					undo_objarray.push([highObj.obj, 0 + g.out_offset-1, objarray[objs].obj, 0 + g.in_offset-1]);
-				}
+				objarray[objs] = objarray[objs].obj;
+			}
+			// remove highest object
+			var highObj = objarray.shift();
+			for (objs in objarray){
+				objarray[objs].patcher.connect(highObj, 0+g.out_offset-1, objarray[objs], 0+g.in_offset-1);
+				undo_objarray.push([highObj, 0+g.out_offset-1, objarray[objs], 0+g.in_offset-1]);
 			}
 			break;				
 			
@@ -510,13 +523,35 @@ function connect_row_to_object()
 			// first inlet, instead of splitting selected objects in
 			// half as in original implementation
 			case "ms" :
+			// sort objects vertically
+			objarray.sort(alignsorty);
+			// store .obj direct in array
 			for (objs in objarray){
-				if (objarray[objs].ypos1 !== lowObj.ypos1){
-					objarray[objs].obj.patcher.connect(objarray[objs].obj, 0 + g.out_offset-1, lowObj.obj, 0 + g.in_offset-1);
-					undo_objarray.push([objarray[objs].obj, 0 + g.out_offset-1, lowObj.obj, 0 + g.in_offset-1]);
-				}
+				objarray[objs] = objarray[objs].obj;
+			}
+			// remove lowest object
+			var lowObj = objarray.pop();
+			for (objs in objarray){
+				objarray[objs].patcher.connect(objarray[objs], 0+g.out_offset-1, lowObj, 0+g.in_offset-1);
+				undo_objarray.push([objarray[objs], 0+g.out_offset-1, lowObj, 0+g.in_offset-1]);
 			}
 			break;
+			
+			// experimental
+			// connects all outlets from one object to all inlets
+			// from another object below it
+			case "io" :
+			if (objarray.length !== 2){
+				post(SELECTTWO);
+				return;
+			}
+			for (objs in objarray){
+				objarray[objs] = objarray[objs].obj;
+			}
+			objarray.sort(alignsortcol);
+			for (var i=0; i<10; i++){
+				objarray[0].patcher.connect(objarray[0], i+g.out_offset-1, objarray[1], i+g.in_offset-1)
+			}
 		}
 	}
 	else if (!max.frontpatcher.locked)
