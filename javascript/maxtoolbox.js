@@ -221,10 +221,10 @@ function alignhorz(mouseX)
 	if (objarray.length < 2){
 		return;
 	}
-	// sort on x and y axis
-	objarray.sort(alignsortx);
+	// sort on x axis
 	objarray.sort(alignsorty);
-	
+	objarray.sort(alignsortx);
+
 	var newpos = [];
 	// width of total objects is mouseX - 1st object - window posX
 	var width = Math.max(0, mouseX - objarray[0].obj.rect[X1] - max.frontpatcher.wind.location[X1]);
