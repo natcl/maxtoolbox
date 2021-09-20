@@ -10,6 +10,10 @@ The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP
 - connect rows of objects in parallel
 - distribute objects horizontally with even spacing
 - distribute objects vertically with even spacing
+- customize shortkeys
+- custom connections via shell-style interface
+
+![](media/screenshot.png)
 
 ## Downloads
 
