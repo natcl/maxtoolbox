@@ -16,7 +16,7 @@ var NOTSELECTED = "MaxToolBox: Less than 2 objects are selected, please select m
 var ARG_MISMATCH = "MaxToolBox: The number of arguments doesn't match the number of selected objects\n";
 var NOT_SAVED = "MaxToolBox: Please save patcher to use this function\n";
 var SELECTTWO = "MaxToolBox: Select only 2 objects to connect\n"
-var UNEVEN = "MaxToolBox: Uneven amount of objects selected, ignoring last object\n"
+var UNEVEN = "MaxToolBox: Uneven amount of objects selected, ignores last object\n"
 var UNDO_EMPTY = "MaxToolBox: Can't undo\n";
 var DELETED = "MaxToolBox: Unloaded\n"
 
@@ -141,10 +141,9 @@ function send()
 function applycollect(b)
 {
 	undo_objarray = []; // TODO: Move this elsewhere
-	if (b.selected)
-	{
-		objarray[compteur] = { obj:b , xpos1:b.rect[X1] , ypos1:b.rect[Y1] , xpos2:b.rect[X2] , ypos2:b.rect[Y2] , width:b.rect[X2]-b.rect[X1], height:b.rect[Y2]-b.rect[Y1] };
-		compteur++;
+	if (b.selected){
+		objarray.push({ obj:b, xpos1:b.rect[X1], ypos1:b.rect[Y1] , xpos2:b.rect[X2], ypos2:b.rect[Y2], width:b.rect[X2]-b.rect[X1], height:b.rect[Y2]-b.rect[Y1] });
+		// compteur++;
 		valid = true;
 	}
 	return true;
@@ -214,6 +213,19 @@ function findmin(maxarray)
 	return minimum;
 }
 
+function checkSelected(selected){
+	if (selected.length < 1){
+		// silently return if nothing is selected
+		return false;
+	} else if (selected.length < 2){
+		// print to select more objects
+		post(NOTSELECTED);
+		clean_up();
+		return false;
+	}
+	return true;
+}
+
 function alignhorz(mouseX)
 {
 	if (max.frontpatcher.locked){
@@ -223,8 +235,8 @@ function alignhorz(mouseX)
 	patching_mode = !max.frontpatcher.getattr("presentation");
 	// collect selected objects
 	max.frontpatcher.apply(applycollect);
-	// return if less than 2 objects are selected
-	if (objarray.length < 2){
+	// are enough objects selected?
+	if (!checkSelected(objarray)){
 		return;
 	}
 	// sort on x axis
@@ -268,8 +280,8 @@ function alignvert(mouseY)
 	patching_mode = !max.frontpatcher.getattr("presentation");
 	// collect selected objects
 	max.frontpatcher.apply(applycollect);
-	// return if less than 2 objects are selected
-	if (objarray.length < 2){
+	// are enough objects selected?
+	if (!checkSelected(objarray)){
 		return;
 	}
 	// sort on x and y axis
@@ -319,9 +331,8 @@ function connect_single_to_single()
 		
 	max.frontpatcher.apply(applycollect);
 
-	if (objarray.length < 2){
-		post(NOTSELECTED);
-		clean_up();
+	// are enough objects selected?
+	if (!checkSelected(objarray)){
 		return;
 	}
 	
@@ -359,8 +370,8 @@ function connect_cascade()
 		
 	temp_patch.apply(applycollect);
 
-	if (objarray.length < 2){
-		post(NOTSELECTED);
+	// are enough objects selected?
+	if (!checkSelected(objarray)){
 		return;
 	}
 
@@ -417,13 +428,8 @@ function connect_row_to_object()
 
 	temp_patch.apply(applycollect);
 	
-	if (objarray.length < 1){
-		// silently return if nothing is selected
-		return;
-	} else if (objarray.length < 2){
-		// print to select more objects
-		post(NOTSELECTED);
-		clean_up();
+	// are enough objects selected?
+	if (!checkSelected(objarray)){
 		return;
 	}
 
@@ -553,7 +559,7 @@ function change_name()
 	{
 		if ((typeof arguments[objs]) == "number")
 		{
-			post("Max ToolBox : Error : Name can't be a number.\n");
+			error("MaxToolBox: Name can't be a number.\n");
 			return;
 		}
 	}
@@ -570,7 +576,7 @@ function change_name()
 			}
 		}
 		else
-			post(ARG_MISMATCH);
+			error(ARG_MISMATCH);
 	}
 	
 	else if (valid)
@@ -584,7 +590,7 @@ function change_name()
 			}
 		}
 		else
-			post(ARG_MISMATCH);
+			error(ARG_MISMATCH);
 	}
 	
 	else
