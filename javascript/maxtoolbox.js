@@ -499,13 +499,14 @@ function connect_row_to_object()
 		case "io" :
 			if (objarray.length !== 2){
 				post(SELECTTWO);
-				return;
+				break;
 			}
 
 			for (var i=0; i<10; i++){
 				objarray[0].patcher.connect(objarray[0], i + g.out_offset-1, objarray[1], i + g.in_offset-1);
 				undo_objarray.push([objarray[0], i + g.out_offset-1, objarray[1], i + g.in_offset-1]);
 			}
+			break;
 	}	
 	clean_up();
 }
