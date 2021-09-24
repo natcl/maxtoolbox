@@ -134,7 +134,7 @@ function send()
 
 function applycollect(b)
 {
-	undo_objarray = new Array(); // TODO: Move this elsewhere
+	undo_objarray = []; // TODO: Move this elsewhere
 	if (b.selected)
 	{
 		objarray[compteur] = { obj:b , xpos1:b.rect[X1] , ypos1:b.rect[Y1] , xpos2:b.rect[X2] , ypos2:b.rect[Y2] , width:b.rect[X2]-b.rect[X1], height:b.rect[Y2]-b.rect[Y1] };
@@ -513,13 +513,13 @@ function connect_row_to_object()
 function undo()
 {
 	presend();
-	if (!temp_patch.locked)
-	{
-		for (var obj in undo_objarray)
-		{
+	if (!temp_patch.locked && undo_objarray.length > 0){
+		for (var obj in undo_objarray){
 			undo_objarray[obj][0].patcher.disconnect(undo_objarray[obj][0], undo_objarray[obj][1], undo_objarray[obj][2], undo_objarray[obj][3]);
 		}
-		undo_objarray = new Array();
+		undo_objarray = [];
+	} else {
+		post('Toolbox : Undo is empty\n');
 	}
 }
 
