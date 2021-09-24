@@ -321,6 +321,7 @@ function connect_single_to_single()
 
 	if (objarray.length < 2){
 		post(NOTSELECTED);
+		clean_up();
 		return;
 	}
 	
@@ -416,8 +417,13 @@ function connect_row_to_object()
 
 	temp_patch.apply(applycollect);
 	
-	if (objarray.length < 2){
+	if (objarray.length < 1){
+		// silently return if nothing is selected
+		return;
+	} else if (objarray.length < 2){
+		// print to select more objects
 		post(NOTSELECTED);
+		clean_up();
 		return;
 	}
 
