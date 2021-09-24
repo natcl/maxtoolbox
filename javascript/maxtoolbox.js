@@ -66,6 +66,7 @@ function loaded()
 
 function clean_up()
 {
+	undo_objarray = [];
 	compteur = 0;
 	objarray.length = 0;
 	valid = false;
@@ -140,10 +141,12 @@ function send()
 
 function applycollect(b)
 {
-	undo_objarray = []; // TODO: Move this elsewhere
+	// figure out a way to have the toolbox also work
+	// when using "show in parent patcher tab"
+	// if (b.maxclass === 'patcher'){}
+
 	if (b.selected){
 		objarray.push({ obj:b, xpos1:b.rect[X1], ypos1:b.rect[Y1] , xpos2:b.rect[X2], ypos2:b.rect[Y2], width:b.rect[X2]-b.rect[X1], height:b.rect[Y2]-b.rect[Y1] });
-		// compteur++;
 		valid = true;
 	}
 	return true;
@@ -235,6 +238,9 @@ function alignhorz(mouseX)
 	patching_mode = !max.frontpatcher.getattr("presentation");
 	// collect selected objects
 	max.frontpatcher.apply(applycollect);
+	// apply deep allows to use tabs and finds the selected
+	// max.frontpatcher.applydeep(applycollect);
+
 	// are enough objects selected?
 	if (!checkSelected(objarray)){
 		return;
@@ -280,6 +286,9 @@ function alignvert(mouseY)
 	patching_mode = !max.frontpatcher.getattr("presentation");
 	// collect selected objects
 	max.frontpatcher.apply(applycollect);
+	// apply deep allows to use tabs and finds the selected
+	// max.frontpatcher.applydeep(applycollect);
+
 	// are enough objects selected?
 	if (!checkSelected(objarray)){
 		return;
@@ -330,6 +339,8 @@ function connect_single_to_single()
 	var filordre = 0;
 		
 	max.frontpatcher.apply(applycollect);
+	// apply deep allows to use tabs and finds the selected
+	// temp_patch.applydeep(applycollect);
 
 	// are enough objects selected?
 	if (!checkSelected(objarray)){
@@ -369,6 +380,8 @@ function connect_cascade()
 	}
 		
 	temp_patch.apply(applycollect);
+	// apply deep allows to use tabs and finds the selected
+	// temp_patch.applydeep(applycollect);
 
 	// are enough objects selected?
 	if (!checkSelected(objarray)){
@@ -427,6 +440,8 @@ function connect_row_to_object()
 	}	
 
 	temp_patch.apply(applycollect);
+	// apply deep allows to use tabs and finds the selected
+	// temp_patch.applydeep(applycollect);
 	
 	// are enough objects selected?
 	if (!checkSelected(objarray)){
