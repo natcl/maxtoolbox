@@ -1,9 +1,9 @@
 autowatch = 1;
 
 if (max.version < "502")
-	post("Max ToolBox : Your version of Max/MSP needs to be at least 5.0.2, please update it.\n");
+	post("ToolBox: Your version of Max/MSP needs to be at least 5.0.2, please update it.\n");
 else
-	post("Max ToolBox v.17 - by Nathanaël Lécaudé, updated by Timo Hoogland\n");
+	post("ToolBox v.17 - by Nathanaël Lécaudé - updated by Timo Hoogland\n");
 
 // Constantes
 var X1 = 0;
@@ -12,11 +12,12 @@ var X2 = 2;
 var Y2 = 3;
 
 // Messages d'erreurs
-var NOTSELECTED = "Max ToolBox : Less than 2 objects are selected, please select more and try again.\n";
-var ARG_MISMATCH = "Max ToolBox : Error : The number of arguments doesn't match the number of selected objects.\n";
-var NOT_SAVED = "Max ToolBox : Please save patcher to use this function\n";
-var SELECTTWO = "Max ToolBox : Select only 2 objects to connect.\n"
-var UNEVEN = "Max ToolBox : Uneven amount of objects selected, ignoring last object.\n"
+var NOTSELECTED = "ToolBox: Less than 2 objects are selected, please select more and try again\n";
+var ARG_MISMATCH = "ToolBox: The number of arguments doesn't match the number of selected objects\n";
+var NOT_SAVED = "ToolBox: Please save patcher to use this function\n";
+var SELECTTWO = "ToolBox: Select only 2 objects to connect\n"
+var UNEVEN = "ToolBox: Uneven amount of objects selected, ignoring last object\n"
+var UNDO_EMPTY = "ToolBox: Can't undo\n";
 
 // Variables globales
 var compteur = 0;
@@ -24,6 +25,9 @@ var compteur_shell = 0;
 var valid = false;
 var objarray = [];
 var undo_objarray = [];
+// 2d array of undo history
+var history = [];
+var history_size = 16;
 
 // Variable temporaire servant à stocker Frontpatcher
 var temp_patch; 
@@ -340,7 +344,6 @@ function connect_single_to_single()
 			max.frontpatcher.connect(objarray[1].obj, n + offsetout,objarray[0].obj, nbconnec - n - 1 + offsetin);
 		}
 	}
-
 	clean_up();
 }
 
@@ -368,7 +371,7 @@ function connect_cascade()
 			undo_objarray.push([objarray[objs].obj, n + g.out_offset-1,objarray[objs + 1].obj, n + g.in_offset-1]);
 		}
 	}
-		
+	history.push(undo_objarray);
 	clean_up();
 }
 
@@ -507,20 +510,27 @@ function connect_row_to_object()
 				undo_objarray.push([objarray[0], i + g.out_offset-1, objarray[1], i + g.in_offset-1]);
 			}
 			break;
-	}	
+	}
+	// add to history
+	history.push(undo_objarray);
+	// remove if bigger than history size
+	if (history.length > history_size){
+		history.shift();
+	}
 	clean_up();
 }
 
 function undo()
 {
 	presend();
-	if (!temp_patch.locked && undo_objarray.length > 0){
+	if (!temp_patch.locked && history.length > 0){
+		undo_objarray = history.pop();
 		for (var obj in undo_objarray){
 			undo_objarray[obj][0].patcher.disconnect(undo_objarray[obj][0], undo_objarray[obj][1], undo_objarray[obj][2], undo_objarray[obj][3]);
 		}
 		undo_objarray = [];
 	} else {
-		post('Toolbox : Undo is empty\n');
+		post(UNDO_EMPTY);
 	}
 }
 
