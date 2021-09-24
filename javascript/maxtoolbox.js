@@ -12,12 +12,13 @@ var X2 = 2;
 var Y2 = 3;
 
 // Messages d'erreurs
-var NOTSELECTED = "ToolBox: Less than 2 objects are selected, please select more and try again\n";
-var ARG_MISMATCH = "ToolBox: The number of arguments doesn't match the number of selected objects\n";
-var NOT_SAVED = "ToolBox: Please save patcher to use this function\n";
-var SELECTTWO = "ToolBox: Select only 2 objects to connect\n"
-var UNEVEN = "ToolBox: Uneven amount of objects selected, ignoring last object\n"
-var UNDO_EMPTY = "ToolBox: Can't undo\n";
+var NOTSELECTED = "MaxToolBox: Less than 2 objects are selected, please select more and try again\n";
+var ARG_MISMATCH = "MaxToolBox: The number of arguments doesn't match the number of selected objects\n";
+var NOT_SAVED = "MaxToolBox: Please save patcher to use this function\n";
+var SELECTTWO = "MaxToolBox: Select only 2 objects to connect\n"
+var UNEVEN = "MaxToolBox: Uneven amount of objects selected, ignoring last object\n"
+var UNDO_EMPTY = "MaxToolBox: Can't undo\n";
+var DELETED = "MaxToolBox: Unloaded\n"
 
 // Variables globales
 var compteur = 0;
@@ -119,7 +120,8 @@ function applysend(a)
 {
 	if (a.selected)
 	{
-		a.message(argtosend);		//Tous les arguments sont envoyés à l'objet
+		//Tous les arguments sont envoyés à l'objet
+		a.message(argtosend);		
 	}		
 	return true;
 }
@@ -523,14 +525,16 @@ function connect_row_to_object()
 function undo()
 {
 	presend();
-	if (!temp_patch.locked && history.length > 0){
-		undo_objarray = history.pop();
-		for (var obj in undo_objarray){
-			undo_objarray[obj][0].patcher.disconnect(undo_objarray[obj][0], undo_objarray[obj][1], undo_objarray[obj][2], undo_objarray[obj][3]);
+	if (!temp_patch.locked){
+		if (history.length > 0){
+			undo_objarray = history.pop();
+			for (var obj in undo_objarray){
+				undo_objarray[obj][0].patcher.disconnect(undo_objarray[obj][0], undo_objarray[obj][1], undo_objarray[obj][2], undo_objarray[obj][3]);
+			}
+			undo_objarray = [];
+		} else {
+			post(UNDO_EMPTY);
 		}
-		undo_objarray = [];
-	} else {
-		post(UNDO_EMPTY);
 	}
 }
 
@@ -611,5 +615,5 @@ function parse_patcher(){
 notifydeleted.local = 1;
 function notifydeleted()
 {
-	post("Max ToolBox : Unloaded\n");
+	post(DELETED);
 }
