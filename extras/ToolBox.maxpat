@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 11,
+			"minor" : 2,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -41,6 +41,98 @@
 		"title" : "ToolBox",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-55",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "C74" ],
+					"patching_rect" : [ 449.0, 88.0, 36.0, 21.0 ],
+					"text" : "t C74"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-54",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 449.0, 58.0, 61.0, 21.0 ],
+					"text" : "route start"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-50",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 622.0, 444.0, 113.0, 19.0 ],
+					"text" : "deprecated"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-43",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "int" ],
+					"patching_rect" : [ 449.0, 180.0, 128.0, 22.0 ],
+					"text" : "conformpath max boot"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-40",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 375.0, 225.0, 62.0, 21.0 ],
+					"text" : "script start"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-29",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 449.0, 225.0, 77.0, 21.0 ],
+					"text" : "prepend path"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-16",
+					"linecount" : 2,
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 449.0, 285.0, 153.0, 34.0 ],
+					"saved_object_attributes" : 					{
+						"autostart" : 1,
+						"defer" : 0,
+						"watch" : 1
+					}
+,
+					"text" : "node.script toolbox_node.js @autostart 1 @watch 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"bgcolor" : [ 0.098039209842682, 0.098039194941521, 0.098039209842682, 1.0 ],
 					"checkedcolor" : [ 0.999999284744263, 0.999974429607391, 0.999991297721863, 1.0 ],
 					"id" : "obj-42",
@@ -63,7 +155,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 435.0, 315.0, 169.0, 21.0 ],
+					"patching_rect" : [ 705.0, 360.0, 169.0, 21.0 ],
 					"text" : "loadunique maxtoolbox.maxpat"
 				}
 
@@ -275,7 +367,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 49.0, 275.0, 70.0, 22.0 ],
-					"save" : [ "#N", "thispatcher", ";", "#Q", "window", "flags", "nogrow", "close", "nozoom", "float", "menu", "minimize", ";", "#Q", "window", "constrain", 50, 50, 32768, 32768, ";", "#Q", "window", "size", 603, 123, 771, 273, ";", "#Q", "window", "title", ";", "#Q", "window", "exec", ";", "#Q", "savewindow", 1, ";", "#Q", "end", ";" ],
+					"save" : [ "#N", "thispatcher", ";", "#Q", "window", "flags", "nogrow", "close", "nozoom", "float", "menu", "minimize", ";", "#Q", "window", "constrain", 50, 50, 32768, 32768, ";", "#Q", "window", "size", 576, 70, 744, 220, ";", "#Q", "window", "title", ";", "#Q", "window", "exec", ";", "#Q", "savewindow", 1, ";", "#Q", "end", ";" ],
 					"text" : "thispatcher"
 				}
 
@@ -293,8 +385,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 11,
+							"minor" : 2,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1828,7 +1920,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 690.0, 225.0, 57.0, 22.0 ],
+					"patching_rect" : [ 683.5, 225.0, 57.0, 22.0 ],
 					"text" : "clear_file"
 				}
 
@@ -1842,7 +1934,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 481.5, 225.0, 64.0, 22.0 ],
+					"patching_rect" : [ 555.0, 225.0, 64.0, 22.0 ],
 					"text" : "create_file"
 				}
 
@@ -1856,8 +1948,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 449.0, 27.0, 129.0, 22.0 ],
-					"text" : "loadmess max-startup"
+					"patching_rect" : [ 449.0, 27.0, 79.0, 22.0 ],
+					"text" : "loadmess init"
 				}
 
 			}
@@ -1870,7 +1962,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 449.0, 270.0, 113.0, 22.0 ],
+					"patching_rect" : [ 622.0, 420.0, 113.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "toolbox_config.js",
 						"parameter_enable" : 0
@@ -1889,7 +1981,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 449.0, 60.0, 77.0, 22.0 ],
+					"patching_rect" : [ 449.0, 120.0, 77.0, 22.0 ],
 					"text" : "absolutepath"
 				}
 
@@ -1938,6 +2030,14 @@
 				"patchline" : 				{
 					"destination" : [ "obj-14", 0 ],
 					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-54", 0 ],
+					"midpoints" : [ 592.5, 333.0, 433.0, 333.0, 433.0, 47.0, 458.5, 47.0 ],
+					"source" : [ "obj-16", 1 ]
 				}
 
 			}
@@ -2009,6 +2109,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"source" : [ "obj-29", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-18", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-32", 0 ]
@@ -2033,6 +2140,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-38", 0 ],
 					"source" : [ "obj-37", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"source" : [ "obj-40", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-29", 0 ],
+					"source" : [ "obj-43", 0 ]
 				}
 
 			}
@@ -2084,7 +2205,21 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-62", 0 ],
+					"destination" : [ "obj-55", 0 ],
+					"source" : [ "obj-54", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-63", 0 ],
+					"source" : [ "obj-55", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
 					"source" : [ "obj-59", 0 ]
 				}
 
@@ -2098,21 +2233,14 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-62", 0 ],
+					"destination" : [ "obj-16", 0 ],
 					"source" : [ "obj-60", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-63", 0 ],
-					"source" : [ "obj-61", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-62", 0 ],
+					"destination" : [ "obj-43", 0 ],
 					"source" : [ "obj-63", 0 ]
 				}
 
@@ -2143,6 +2271,13 @@
 				"name" : "mtb_shortcuts.txt",
 				"bootpath" : "~/Documents/Max 8/Packages/maxtoolbox/misc",
 				"patcherrelativepath" : "../misc",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "toolbox_node.js",
+				"bootpath" : "~/Documents/Max 8/Packages/maxtoolbox/javascript",
+				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
