@@ -14,9 +14,9 @@ The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP
 - custom connections via shell-style interface
 
 ![](media/screenshot.png)
-## Install (Max 7+)
+## Install (Max 8)
 
-[Max 7/8](https://github.com/tmhglnd/maxtoolbox/archive/refs/heads/master.zip)
+[Max 8](https://github.com/tmhglnd/maxtoolbox/archive/refs/heads/master.zip)
 
 ```
 1. download latest code zip
@@ -38,13 +38,17 @@ The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP
 1. Make sure you delete all files related to the ToolBox
 2. Install as described above.
 
-### For Max 6 and older
+### For Max 7 and older
 
-- [Max 5 and 6](https://github.com/natcl/maxtoolbox/archive/Version15.zip)
+⚠️ **This version is temporarily not supported for Max 7 or older** ⚠️
+
+- [**Please download this older commit**](https://github.com/tmhglnd/maxtoolbox/tree/8852b5a87e939a72f0dd8647bfffe05ed96106ba)
+
+<!-- - [Max 5 and 6](https://github.com/natcl/maxtoolbox/archive/Version15.zip)
 - [Max 4](https://maxtoolbox.googlecode.com/files/maxtoolbox_b8_max4.zip)
 
 1. Place the ToolBox folder in one of your search path (Easiest is in "Cycling' 74")
-2. Place the ToolBox.maxpat file in your extras folder
+2. Place the ToolBox.maxpat file in your extras folder -->
 
 <!-- ## Contact me -->
 
