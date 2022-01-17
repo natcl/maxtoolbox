@@ -18,7 +18,7 @@ The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP
 | choose number of inlet for next connection | `I` (`shift` - `i`) |
 | choose number of outlet for next connection | `O` (`shift` - `o`) |
 | choose number of connections to make from one object | `N` (`shift` - `n`) |
-| create new object(s) with connection to selected object(s) | `|` (`shift` - `\`) |
+| create new object(s) with connection to selected object(s) | `\|` (`shift` - `\`) |
 | select next object down | `S` (`shift` - `s`) |
 | select next object up | `W` (`shift` - `w`) |
 | distribute objects horizontally with even spacing | hold `x` |
