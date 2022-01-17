@@ -94,7 +94,9 @@ You can send separate messages the same way as in a message box by using a comma
 While you can access most of the functions of this ToolBox using keyboard commands, (see reference below) you can also use the shell to access those functions. Certain functions will require the use of the shell because they need some arguments. Functions are always called with the `@` symbol. When arguments are used, they are typed after the function’s name. 
 
 >Example:
->To invoke the function that connects an outlet to the inlets of a row of objects you would first select the objects, hit `shift-r`, type “@sm” and hit enter. The function also accepts arguments to choose which inlets and outlets to connect. In order to connect outlet 3 of the top object to inlet 2 of the objects below, you would enter this in the shell instead: `@sm o 3 i 2`.
+>To invoke the function that connects an outlet to the inlets of a row of objects you would first select the objects, hit `shift-r`, type “@sm” and hit enter. The function also accepts arguments to choose which inlets and outlets to connect. In order to connect outlet 3 of the top object to inlet 2 of the objects below, you would enter this in the shell instead: `@sm o 3 i 2`. You can also choose the amount of connections from one object for `@cc` with for example `n 5`.
+
+*NB: spaces and order are not necessary between the arguments, only after the `@`; `@sm o3i2` is also valid, so is `@sm i2 o3`*
 
 #### Functions that are not accessed by the shell
 

@@ -681,11 +681,15 @@ function change_name()
 	{
 		objarray.sort(alignsorty);
 		
-		if (arguments.length - 1 == objarray.length && arguments[0] != "bang")
+		if (arguments.length - 1 == objarray.length && arguments[0] != "bang" || arguments[1].match(/\$/))
 		{
 			for (objs = 0 ; objs < objarray.length ; objs++)
 			{
-				objarray[objs].obj.varname = arguments[objs + 1];
+				if (arguments[1].match(/\$/)){
+					objarray[objs].obj.varname = arguments[1].replace(/\$/, objs);
+				} else {
+					objarray[objs].obj.varname = arguments[objs + 1];
+				}
 			}
 		}
 		else
@@ -695,11 +699,15 @@ function change_name()
 	else if (valid)
 	{
 		objarray.sort(alignsortx);
-		if (arguments.length == objarray.length  && arguments[0] != "bang")
+		if (arguments.length == objarray.length  && arguments[0] != "bang" || arguments[0].match(/\$/))
 		{
 			for (objs in objarray)
 			{
-				objarray[objs].obj.varname = arguments[objs];
+				if (arguments[0].match(/\$/)){
+					objarray[objs].obj.varname = arguments[0].replace(/\$/, objs);
+				} else {
+					objarray[objs].obj.varname = arguments[objs];
+				}
 			}
 		}
 		else
