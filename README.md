@@ -2,9 +2,9 @@
 
 The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP environment. The main feature is the ability to quickly connect objects using keyboard shortcuts. You can:
 
-![](media/screenshot.png)
+![](media/maxtoolbox-overview.gif)
 
-## Features
+## Features Overview
 
 | function | shortkey |
 | - | - |
@@ -27,9 +27,13 @@ The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP
 | custom connections via shell-style interface | `±` (`shift` - `§`) |
 | customize shortkeys | |
 
+## Documentation
+
+[Open documentation](/docs/docs.md)
+
 ## Install (Max 8)
 
-[Max 8](https://github.com/tmhglnd/maxtoolbox/archive/refs/heads/master.zip)
+Download the latest version of the package for [Max 8](https://github.com/tmhglnd/maxtoolbox/archive/refs/heads/master.zip)
 
 ```
 1. download latest code zip

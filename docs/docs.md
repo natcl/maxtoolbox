@@ -35,9 +35,7 @@ Here is a list of the features included in this package:
 
 ## Install
 
-The ToolBox contains the following files :
-
-[Max 8](https://github.com/tmhglnd/maxtoolbox/archive/refs/heads/master.zip)
+Download the latest version of the package for [Max 8](https://github.com/tmhglnd/maxtoolbox/archive/refs/heads/master.zip)
 
 ```
 1. download latest code zip
