@@ -438,11 +438,11 @@ function select_next(updown){
 }
 
 function next(){
-	select_next(-1);
+	select_next(1);
 }
 
 function previous(){
-	select_next(1);
+	select_next(-1);
 }
 
 function connect_new_object(){
