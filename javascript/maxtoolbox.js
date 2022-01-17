@@ -448,8 +448,8 @@ function connect_new_object(){
 		var y = objarray[objs].obj.rect[Y1];
 		var n = max.frontpatcher.newdefault(x, y+30, "newobj");
 		
-		objarray[0].obj.patcher.connect(objarray[objs].obj, 0, n, 0);
-		undo_objarray.push([objarray[objs].obj , 0, n, 0]);
+		objarray[0].obj.patcher.connect(objarray[objs].obj, 0 + g.out_offset - 1, n, 0 + g.in_offset - 1);
+		undo_objarray.push([objarray[objs].obj , 0 + g.out_offset, n, 0 + g.in_offset]);
 		n.selected = true;
 	}
 	// add to history
