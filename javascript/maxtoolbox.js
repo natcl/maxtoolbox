@@ -88,38 +88,22 @@ function clean_up()
 
 function gather_io(arguments)
 {
-	if (arguments[0] != "bang" && arguments.length) // Un bang est ajouté à prepend lorsque aucun argument lui est fournir.
-	{
-		if (arguments[0] == "i" && arguments[2] == "o" && arguments.length == 4 && typeof arguments[1] == "number" && typeof arguments[3] == "number")
-		{
-			g.in_offset = arguments[1];
-			g.out_offset = arguments[3];
-			return true;
+	var args = arrayfromargs(arguments).join("");
+	post('args', args, "\n");
+
+	if (args.match(/[io]|bang/)){
+		if (args.match(/i(\d+)/)){
+			g.in_offset = args.match(/i(\d+)/)[1];
 		}
-		else if (arguments[0] == "o" && arguments[2] == "i" && arguments.length == 4 && typeof arguments[1] == "number" && typeof arguments[3] == "number")
-		{
-			g.in_offset = arguments[3];
-			g.out_offset = arguments[1];
-			return true;
+		if (args.match(/o(\d+)/)){
+			g.out_offset = args.match(/o(\d+)/)[1];
 		}
-		else if (arguments[0] == "o" && arguments.length == 2 && typeof arguments[1] == "number")
-		{
-			g.out_offset = arguments[1];
-			return true;
-		}
-		else if (arguments[0] == "i" && arguments.length == 2 && typeof arguments[1] == "number")
-		{
-			g.in_offset = arguments[1];
-			return true;
-		}
-		else
-		{
-			post("Max ToolBox : Error : Wrong arguments.\n");
-			return false;
-		}
-	}
-	else
+		// post('offsets', g.in_offset, g.out_offset, "\n");
 		return true;
+	} else {
+		post("Max ToolBox: Unkown arguments.\n");
+		return false;
+	}
 }
 
 function applysend(a)
