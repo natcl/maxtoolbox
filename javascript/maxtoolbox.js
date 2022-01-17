@@ -25,6 +25,7 @@ var compteur = 0;
 var compteur_shell = 0;
 var valid = false;
 var objarray = [];
+var allobj = [];
 var undo_objarray = [];
 // 2d array of undo history
 var history = [];
@@ -72,6 +73,7 @@ function clean_up()
 	undo_objarray = [];
 	compteur = 0;
 	objarray.length = 0;
+	allobj.length = 0;
 	valid = false;
 	
 	temp_patch = null;
@@ -153,6 +155,11 @@ function applycollect(b)
 		valid = true;
 	}
 	return true;
+}
+
+function applycollectall(b){
+	// collect all objects in the patcher
+	allobj.push(b);
 }
 
 function change_shell_title()
@@ -405,6 +412,39 @@ function connect_cascade()
 	clean_up();
 }
 
+function select_next(updown){
+	// return if the patcher is locked
+	if (max.frontpatcher.locked){
+		return;
+	}
+	
+	temp_patch.apply(applycollectall);
+
+	var selected = -1;
+	for (var i=0; i<allobj.length; i++){
+		if (allobj[i].selected){
+			selected = i;
+			break;
+		}
+	}
+	if (selected > -1){
+		var l = allobj.length;
+		var s = ((selected % l + l) + updown) % l; 
+		allobj[s].selected = true;
+		clean_up();
+	} else {
+		return;
+	}
+}
+
+function next(){
+	select_next(-1);
+}
+
+function previous(){
+	select_next(1);
+}
+
 function connect_new_object(){
 	// return if the patcher is locked
 	if (!gather_io(arguments) || max.frontpatcher.locked){
@@ -424,7 +464,6 @@ function connect_new_object(){
 		
 		objarray[0].obj.patcher.connect(objarray[objs].obj, 0, n, 0);
 		n.selected = true;
-		n.editing = true;
 	}
 	clean_up();
 }
