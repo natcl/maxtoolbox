@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 2,
-			"revision" : 0,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -39,6 +39,33 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontsize" : 11.0,
+					"id" : "obj-78",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 230.0, 250.0, 132.0, 43.0 ],
+					"presentation_linecount" : 4,
+					"text" : "- [shift - n] \nchange number of connections (default=1)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 11.0,
+					"id" : "obj-77",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 565.0, 247.0, 99.0, 56.0 ],
+					"text" : "- [shift - n] \nchange number of connections (default = 5)"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 9.160197999999999,
@@ -145,7 +172,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 428.0, 332.0, 137.0, 31.0 ],
-					"presentation_linecount" : 2,
 					"text" : "Undo connection\nup to 16 times"
 				}
 
@@ -173,7 +199,7 @@
 					"numinlets" : 5,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 534.0, 290.0, 61.0, 19.0 ],
+					"patching_rect" : [ 484.75, 293.0, 61.0, 19.0 ],
 					"text" : "join 5"
 				}
 
@@ -187,7 +213,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 6,
 					"outlettype" : [ "", "", "", "", "", "" ],
-					"patching_rect" : [ 534.0, 257.0, 71.5, 19.0 ],
+					"patching_rect" : [ 484.75, 260.0, 71.5, 19.0 ],
 					"text" : "unjoin 5"
 				}
 
@@ -201,7 +227,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 439.0, 290.0, 88.0, 24.0 ],
+					"patching_rect" : [ 439.0, 290.0, 22.0, 24.0 ],
 					"text" : "d"
 				}
 
@@ -243,7 +269,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 230.0, 290.0, 88.0, 24.0 ],
-					"text" : "shift-c (C)"
+					"text" : "shift -c (C)"
 				}
 
 			}
@@ -548,7 +574,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 219.0, 234.0, 137.0, 19.0 ],
+					"patching_rect" : [ 219.0, 234.0, 122.0, 19.0 ],
 					"text" : "@cc [connect cascade]"
 				}
 
