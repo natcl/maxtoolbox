@@ -89,14 +89,16 @@ function clean_up()
 function gather_io(arguments)
 {
 	var args = arrayfromargs(arguments).join("");
-	post('args', args, "\n");
 
-	if (args.match(/[io]|bang/)){
+	if (args.match(/[ion]|bang/) || args === ''){
 		if (args.match(/i(\d+)/)){
-			g.in_offset = args.match(/i(\d+)/)[1];
+			g.in_offset = Number(args.match(/i(\d+)/)[1]);
 		}
 		if (args.match(/o(\d+)/)){
-			g.out_offset = args.match(/o(\d+)/)[1];
+			g.out_offset = Number(args.match(/o(\d+)/)[1]);
+		}
+		if (args.match(/n(\d+)/)){
+			g.num_connec = Number(args.match(/n(\d+)/)[1]);
 		}
 		// post('offsets', g.in_offset, g.out_offset, "\n");
 		return true;

@@ -145,7 +145,7 @@ For the connect cascade (`shift-c`) function, you can specify a number of connec
 | - | - |
 | Shortkey | `C` (`shift-c`)
 | Shell command | `@cc`
-| Arguments | `o` [n] `i` [n]  (where n is the inlet or outlet number to connect, optional)
+| Arguments | `o` [n] `i` [n] `n` [n]  (where n is the inlet or outlet number to connect or number of connections, optional)
 | Description | Connect a selection of objects in cascade from top to bottom. You can choose which outlet or inlets to connect with arguments or `shift-i/o`. You can choose the number of inlets/outlets to connect with `shift-n` |
 
 | | Connect single to row
