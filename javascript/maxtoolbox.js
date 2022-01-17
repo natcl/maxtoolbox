@@ -536,8 +536,7 @@ function connect_row_to_object()
 				post(SELECTTWO);
 				break;
 			}
-
-			post('connect from:', objarray[0].patcher.maxclass);
+			// getInletsOutlets(objarray[0]);
 
 			// basically like shift_c
 			// defaults to max of 5 connections
@@ -555,6 +554,41 @@ function connect_row_to_object()
 		history.shift();
 	}
 	clean_up();
+}
+
+// attempt to get the number of inlets and outlets
+// based on the maxref.xml file from the reference
+// 
+function getInletsOutlets(o){
+	var n = o.maxclass;
+	var i = 0;
+	var o = 0;
+
+	post('object:', n, "\n");
+
+	var ref = new File(n + '.maxref.xml');
+	var f = '';
+	if (ref.isopen){
+		while (ref.position < ref.eof){
+			var l = ref.readline();
+			var inlet = l.match(/<inlet id="(\d+)"/);
+			if (inlet){
+				i = Number(inlet[1]) + 1;
+			} else {
+				var outlet = l.match(/<outlet id="(\d+)"/);
+				if (outlet){
+					o = Number(outlet[1]) + 1;
+				}
+			}
+		}
+		post('inlets:', i, 'outlets:', o);
+		ref.close();
+		return [i, o];
+	} else {
+		// if xml read was unsuccesful
+		post('could not read \n');
+		return [1, 1];
+	}
 }
 
 // function console(){
