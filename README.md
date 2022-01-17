@@ -2,18 +2,31 @@
 
 The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP environment. The main feature is the ability to quickly connect objects using keyboard shortcuts. You can:
 
-- connect multiple to a single
-- connect single to multiple
-- connect a row to consecutive inlets of one object
-- connect consecutive outlets of one object to a row
-- connect cascade
-- connect rows of objects in parallel
-- distribute objects horizontally with even spacing
-- distribute objects vertically with even spacing
-- customize shortkeys
-- custom connections via shell-style interface
-
 ![](media/screenshot.png)
+
+## Features
+
+| function | shortkey |
+| - | - |
+| connect multiple objects to a single | `a` |
+| connect single to multiple | `q` |
+| connect multiple objects to consecutive inlets of one object | `s` |
+| connect consecutive outlets of one object to a row | `w` |
+| connect rows of objects in parallel | `e` |
+| connect cascade | `C` (`shift` - `c`) |
+| connect multiple inlets of one object to multiple inlets of another | `d` |
+| choose number of inlet for next connection | `I` (`shift` - `i`) |
+| choose number of outlet for next connection | `O` (`shift` - `o`) |
+| choose number of connections to make from one object | `N` (`shift` - `n`) |
+| create new object(s) with connection to selected object(s) | `|` (`shift` - `\`) |
+| select next object down | `S` (`shift` - `s`) |
+| select next object up | `W` (`shift` - `w`) |
+| distribute objects horizontally with even spacing | hold `x` |
+| distribute objects vertically with even spacing | hold `y` |
+| distribute objects diagonally with even spacing | hold `x` & `y` |
+| custom connections via shell-style interface | `±` (`shift` - `§`) |
+| customize shortkeys | |
+
 ## Install (Max 8)
 
 [Max 8](https://github.com/tmhglnd/maxtoolbox/archive/refs/heads/master.zip)
