@@ -1,8 +1,12 @@
 # Max ToolBox Manual
 
 By Nathanaël Lécaudé
+
+[maxtoolbox@studioimaginaire.com](maxtoolbox@studioimaginaire.com)
+
 Updated by Timo Hoogland
-maxtoolbox@studioimaginaire.com
+
+[www.timohoogland.com](www.timohoogland.com)
 
 ## Table of content
 
@@ -62,7 +66,7 @@ The shell is the most powerful way to interact with the ToolBox and it is import
  
 ### Shell
 
-You can access the shell by pressing `shift-r` (customizable). This will open a small window where you can enter text and process it by hitting enter. Depending on the function you want to execute you might need to select objects prior to hitting shift-r.
+You can access the shell by pressing `±` (`shift-§`) (customizable). This will open a small window where you can enter text and process it by hitting enter. Depending on the function you want to execute you might need to select objects prior to hitting shift-r.
 
 #### What can the shell do?
 
@@ -76,7 +80,7 @@ The shell is used to perform two different things:
 Sending messages to selected objects is the same as creating a message box, writing a message in it, connecting it to some object(s) and clicking the message box. The only difference is that it’s much faster to do so using the shell. Here is how you would do it: 
 
 1.	Select one or several objects in your patch
-2.	Hit the shell shortcut key `shift-r`
+2.	Hit the shell shortcut key `±` (`shift-§`)
 3.	Type the message you want to send in the dialog box
 4.	Hit enter
 
@@ -139,7 +143,7 @@ For the connect cascade (`shift-c`) function, you can specify a number of connec
 
 | | Connect cascade |
 | - | - |
-| Shortkey | `shift-c`
+| Shortkey | `C` (`shift-c`)
 | Shell command | `@cc`
 | Arguments | `o` [n] `i` [n]  (where n is the inlet or outlet number to connect, optional)
 | Description | Connect a selection of objects in cascade from top to bottom. You can choose which outlet or inlets to connect with arguments or `shift-i/o`. You can choose the number of inlets/outlets to connect with `shift-n` |
@@ -167,14 +171,14 @@ For the connect cascade (`shift-c`) function, you can specify a number of connec
 
 | | New object and connect |
 | - | - |
-| Shortkey | `shift-\` |
+| Shortkey | `\|` (`shift-\`) |
 | Shell command | `none` |
 | Arguments | `none` |
 | Description | Create a new empty object below the selected object and connect the outlet of the selected object to the inlet of the new object. Automatically moves the selection to the new object. |
 
 | | Selection next object |
 | - | - |
-| Shortkey | `shift-s` `shift-w` |
+| Shortkey | `S` `W` (`shift-s` `shift-w`) |
 | Shell command | `none` |
 | Arguments | `none` |
 | Description | Select the next or previous object in the patcher. |
