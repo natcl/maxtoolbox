@@ -30,6 +30,9 @@ var undo_objarray = [];
 var history = [];
 var history_size = 16;
 
+// error from console on patchcord out of range
+var out_of_range = false;
+
 // Variable temporaire servant à stocker Frontpatcher
 var temp_patch; 
 // var patching_mode = "patching_rect";
@@ -439,7 +442,7 @@ function connect_row_to_object()
 		return;
 	}	
 
-	temp_patch.apply(applycollect);
+	temp_patch.applydeep(applycollect);
 	// apply deep allows to use tabs and finds the selected
 	// temp_patch.applydeep(applycollect);
 	
@@ -534,7 +537,12 @@ function connect_row_to_object()
 				break;
 			}
 
-			for (var i=0; i<10; i++){
+			post('connect from:', objarray[0].patcher.maxclass);
+
+			// basically like shift_c
+			// defaults to max of 5 connections
+			var cn = (g.num_connec < 2)? 5 : g.num_connec;
+			for (var i=0; i<cn; i++){
 				objarray[0].patcher.connect(objarray[0], i + g.out_offset-1, objarray[1], i + g.in_offset-1);
 				undo_objarray.push([objarray[0], i + g.out_offset-1, objarray[1], i + g.in_offset-1]);
 			}
@@ -548,6 +556,13 @@ function connect_row_to_object()
 	}
 	clean_up();
 }
+
+// function console(){
+// 	var m = arrayfromargs(arguments).join(' ');
+// 	if (m.match(/.+out of range.+/g)){
+// 		out_of_range = true;
+// 	}
+// }
 
 function undo()
 {
