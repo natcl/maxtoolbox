@@ -190,4 +190,4 @@ For the connect cascade (`shift-c`) function, you can specify a number of connec
 | Shortkey key | `none` |
 | Shell command | `@name` |
 | Arguments | `-v` (when naming a column) |
-| Description | This will name a row or column of objects. To use, select the row or column and press cmd/ctrl-r to open the shell, type “@name nameofobject1 nameofobject2 nameofobject 3 …”  When naming a column you need to use this syntax instead : “@name –v nameofobject1 nameofobject2 nameofobject 3 …”. |
+| Description | This will name a row or column of objects. To use, select the row or column open the shell, type `@name name1 name2 ... name7` for amount of selected objects. When naming a column use the following syntax: `@name –v name1 name2 ...`. You can name objects ascending with a name that includes a `$`. For example: `@name myParam$` will result in `myParam0 myParam1 ... etc` |

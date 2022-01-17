@@ -25,6 +25,8 @@ The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP
 | distribute objects vertically with even spacing | hold `y` |
 | distribute objects diagonally with even spacing | hold `x` & `y` |
 | custom connections via shell-style interface | `±` (`shift` - `§`) |
+| send messages to objects via the shell | `±` (`shift` - `§`) |
+| set ascending scriptingnames for objects | `@name myParam$` |
 | customize shortkeys | |
 
 ## Documentation

@@ -449,7 +449,14 @@ function connect_new_object(){
 		var n = max.frontpatcher.newdefault(x, y+30, "newobj");
 		
 		objarray[0].obj.patcher.connect(objarray[objs].obj, 0, n, 0);
+		undo_objarray.push([objarray[objs].obj , 0, n, 0]);
 		n.selected = true;
+	}
+	// add to history
+	history.push(undo_objarray);
+	// remove if bigger than history size
+	if (history.length > history_size){
+		history.shift();
 	}
 	clean_up();
 }
