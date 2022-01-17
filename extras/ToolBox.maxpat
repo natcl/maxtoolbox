@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 2,
-			"revision" : 0,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -386,7 +386,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 2,
-							"revision" : 0,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2254,7 +2254,21 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "mtb_shortcuts.txt",
+				"bootpath" : "~/Documents/Max 8/Packages/maxtoolbox/misc",
+				"patcherrelativepath" : "../misc",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "toolbox_config.js",
+				"bootpath" : "~/Documents/Max 8/Packages/maxtoolbox/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "toolbox_node.js",
 				"bootpath" : "~/Documents/Max 8/Packages/maxtoolbox/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
@@ -2265,20 +2279,6 @@
 				"bootpath" : "~/Documents/Max 8/Packages/maxtoolbox/help",
 				"patcherrelativepath" : "../help",
 				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "mtb_shortcuts.txt",
-				"bootpath" : "~/Documents/Max 8/Packages/maxtoolbox/misc",
-				"patcherrelativepath" : "../misc",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "toolbox_node.js",
-				"bootpath" : "~/Documents/Max 8/Packages/maxtoolbox/javascript",
-				"patcherrelativepath" : "../javascript",
-				"type" : "TEXT",
 				"implicit" : 1
 			}
  ],

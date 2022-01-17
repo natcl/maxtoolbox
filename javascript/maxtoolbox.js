@@ -405,6 +405,30 @@ function connect_cascade()
 	clean_up();
 }
 
+function connect_new_object(){
+	// return if the patcher is locked
+	if (!gather_io(arguments) || max.frontpatcher.locked){
+		return;
+	}
+	// collect all selected objects
+	temp_patch.apply(applycollect);
+	// are enough objects selected?
+	if (objarray.length < 1){
+		return;
+	}
+	
+	for (objs in objarray){
+		var x = objarray[objs].obj.rect[X1];
+		var y = objarray[objs].obj.rect[Y1];
+		var n = max.frontpatcher.newdefault(x, y+30, "newobj");
+		
+		objarray[0].obj.patcher.connect(objarray[objs].obj, 0, n, 0);
+		n.selected = true;
+		n.editing = true;
+	}
+	clean_up();
+}
+
 function pre_row()
 {
 	switch (arguments[0])
