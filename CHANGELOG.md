@@ -1,5 +1,21 @@
 # Max ToolBox - CHANGELOG
- 
+
+## Version 16
+Jan 18th, 2022
+
+* No support for Max7 or older
+* Max8 'activate' bug fixed
+* Undo function with history (shortkey `u`)
+* Fixes where some objects where not connected
+* Smoother x/y alignment of objects with mouse (shortkey hold `x` `y`)
+* Create new empty object below selected object and connect (shortkey `shift-\`)
+* Shell shortkey changed to less used key (`shift-§`, or `±`)
+* Send a bang to all selected objects (`shift-b`)
+* Create scripting names via shell with number increment by `@name myParam$`
+* Select next or previous object (`shift-s` `shift-w`)
+* Use `n` in shell for `@cc` to set number of connects
+* Documentation updates
+
 ## Version 15
 April 27th, 2013
 
