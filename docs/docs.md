@@ -185,6 +185,13 @@ For the connect cascade (`shift-c`) function, you can specify a number of connec
 | Arguments | `none` |
 | Description | Select the next or previous object in the patcher. |
 
+| | Send a bang |
+| - | - |
+| Shortkey | `B` (`shift-b`) |
+| Shell command | `none` |
+| Arguments | `none` |
+| Description | Send a bang to all the selected objects. |
+
 | | Name a row or column of objects |
 | - | - |
 | Shortkey key | `none` |

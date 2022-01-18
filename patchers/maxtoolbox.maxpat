@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 952.0, 194.0, 360.0, 375.0 ],
+		"rect" : [ 979.0, 170.0, 360.0, 375.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -290,6 +290,42 @@
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-34",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 2,
+									"outlettype" : [ "bang", "" ],
+									"patching_rect" : [ 641.0, 325.0, 30.0, 20.0 ],
+									"text" : "sel 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-33",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 641.0, 355.0, 97.0, 20.0 ],
+									"text" : "presend, send bang"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-27",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"patching_rect" : [ 641.0, 295.0, 45.0, 20.0 ],
+									"text" : "route bn"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 12.0,
@@ -1711,6 +1747,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-27", 0 ],
+									"source" : [ "obj-23", 2 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-30", 0 ],
 									"source" : [ "obj-23", 0 ]
 								}
@@ -1746,6 +1789,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-34", 0 ],
+									"source" : [ "obj-27", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-12", 0 ],
 									"source" : [ "obj-28", 0 ]
 								}
@@ -1776,6 +1826,20 @@
 								"patchline" : 								{
 									"destination" : [ "obj-20", 0 ],
 									"source" : [ "obj-32", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-20", 0 ],
+									"source" : [ "obj-33", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-33", 0 ],
+									"source" : [ "obj-34", 0 ]
 								}
 
 							}
@@ -1946,7 +2010,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 693.0, 138.0, 504.0, 450.0 ],
+						"rect" : [ 237.0, 203.0, 504.0, 450.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 10.0,
@@ -2999,7 +3063,7 @@
 														}
 ,
 														"classnamespace" : "box",
-														"rect" : [ 76.0, 458.0, 1014.0, 188.0 ],
+														"rect" : [ 106.0, 478.0, 1014.0, 188.0 ],
 														"bglocked" : 0,
 														"openinpresentation" : 0,
 														"default_fontsize" : 10.0,
@@ -4231,7 +4295,7 @@
 													"numinlets" : 3,
 													"numoutlets" : 3,
 													"outlettype" : [ "", "", "" ],
-													"patching_rect" : [ 9.0, 52.0, 70.0, 17.0 ],
+													"patching_rect" : [ 9.0, 52.0, 70.0, 19.0 ],
 													"text" : "route vd hd"
 												}
 
@@ -4245,7 +4309,7 @@
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 9.0, 27.0, 68.0, 17.0 ],
+													"patching_rect" : [ 9.0, 27.0, 68.0, 19.0 ],
 													"text" : "r mtb_shortcut"
 												}
 
@@ -4260,7 +4324,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 9.0, 136.0, 72.0, 26.0 ],
+													"patching_rect" : [ 9.0, 136.0, 72.0, 29.0 ],
 													"text" : ";\rglob distxy $1"
 												}
 
@@ -4274,7 +4338,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 2,
 													"outlettype" : [ "", "" ],
-													"patching_rect" : [ 9.0, 83.0, 42.0, 17.0 ],
+													"patching_rect" : [ 9.0, 83.0, 42.0, 19.0 ],
 													"text" : "bondo 2"
 												}
 
@@ -4288,7 +4352,7 @@
 													"numinlets" : 2,
 													"numoutlets" : 1,
 													"outlettype" : [ "int" ],
-													"patching_rect" : [ 9.0, 109.0, 40.0, 17.0 ],
+													"patching_rect" : [ 9.0, 109.0, 40.0, 19.0 ],
 													"text" : "&&"
 												}
 
