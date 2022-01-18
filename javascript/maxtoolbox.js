@@ -446,7 +446,7 @@ function connect_new_object(){
 	for (objs in objarray){
 		var x = objarray[objs].obj.rect[X1];
 		var y = objarray[objs].obj.rect[Y1];
-		var n = max.frontpatcher.newdefault(x, y+30, "newobj");
+		var n = max.frontpatcher.newdefault(x, y+45, "newobj");
 		
 		objarray[0].obj.patcher.connect(objarray[objs].obj, 0 + g.out_offset - 1, n, 0 + g.in_offset - 1);
 		undo_objarray.push([objarray[objs].obj , 0 + g.out_offset, n, 0 + g.in_offset]);
@@ -672,59 +672,45 @@ function undo()
 
 function change_name()
 {
-	var objs = 0;
-	temp_patch.apply(applycollect);
+	var args = arrayfromargs(arguments);
 	
-	for (objs = 0; objs < arguments.length ; objs++)
-	{
-		if ((typeof arguments[objs]) == "number")
-		{
-			error("MaxToolBox: Name can't be a number.\n");
+	for (var objs in args) {
+		if ((typeof args[objs]) === "number") {
+			error("MaxToolBox: name can't be a number.\n");
 			return;
 		}
 	}
-	
-	if (valid && arguments[0] == "-v")
-	{
-		objarray.sort(alignsorty);
-		
-		if (arguments.length - 1 == objarray.length && arguments[0] != "bang" || arguments[1].match(/\$/))
-		{
-			for (objs = 0 ; objs < objarray.length ; objs++)
-			{
-				if (arguments[1].match(/\$/)){
-					objarray[objs].obj.varname = arguments[1].replace(/\$/, objs);
-				} else {
-					objarray[objs].obj.varname = arguments[objs + 1];
-				}
-			}
-		}
-		else
-			error(ARG_MISMATCH);
+	temp_patch.apply(applycollect);
+	// are enough objects selected?
+	if (objarray.length < 1 || args[0] === 'bang'){
+		return;
 	}
-	
-	else if (valid)
-	{
-		objarray.sort(alignsortx);
-		if (arguments.length == objarray.length  && arguments[0] != "bang" || arguments[0].match(/\$/))
-		{
-			for (objs in objarray)
-			{
-				if (arguments[0].match(/\$/)){
-					objarray[objs].obj.varname = arguments[0].replace(/\$/, objs);
-				} else {
-					objarray[objs].obj.varname = arguments[objs];
-				}
-			}
-		}
-		else
-			error(ARG_MISMATCH);
-	}
-	
-	else
-		post(NOTSELECTED);
 
+	if (args[0] == '-v'){
+		objarray.sort(alignsorty);
+		// remove '-v' from arguments
+		args.shift();
+	} else {
+		objarray.sort(alignsortx);
+	}
+	// are enough arguments?
+	if (args.length < 1){
+		return;
+	}
+
+	if (args.length === objarray.length || args[0].match(/\$/)){
+		for (var objs in objarray){
+			if (args[0].match(/\$/)){
+				objarray[objs].obj.varname = args[0].replace(/\$/, objs);
+			} else {
+				objarray[objs].obj.varname = args[objs];
+			}
+		}
+	} else {
+		error(ARG_MISMATCH);
+	}
 	clean_up();
+	return;
 }
 
 function parse_patcher(){

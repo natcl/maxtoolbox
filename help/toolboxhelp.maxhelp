@@ -47,7 +47,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 230.0, 250.0, 132.0, 43.0 ],
-					"presentation_linecount" : 4,
 					"text" : "- [shift - n] \nchange number of connections (default=1)"
 				}
 
@@ -60,7 +59,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 565.0, 247.0, 99.0, 56.0 ],
+					"patching_rect" : [ 565.0, 247.0, 100.0, 56.0 ],
 					"text" : "- [shift - n] \nchange number of connections (default = 5)"
 				}
 
@@ -282,7 +281,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 428.0, 12.0, 214.0, 20.0 ],
-					"text" : "commandline : [ shift - r ]"
+					"text" : "commandline : [ shift - § ]"
 				}
 
 			}
