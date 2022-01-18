@@ -3,7 +3,7 @@ autowatch = 1;
 if (max.version < "502")
 	post("ToolBox: Your version of Max/MSP needs to be at least 5.0.2, please update it.\n");
 else
-	post("ToolBox v.17 - by Nathanaël Lécaudé - updated by Timo Hoogland\n");
+	post("ToolBox v.16 - by Nathanaël Lécaudé - updated by Timo Hoogland\n");
 
 // Constantes
 var X1 = 0;
