@@ -2,11 +2,11 @@
 
 By Nathanaël Lécaudé
 
-[maxtoolbox@studioimaginaire.com](maxtoolbox@studioimaginaire.com)
+[maxtoolbox@studioimaginaire.com](mailto:maxtoolbox@studioimaginaire.com)
 
 Updated by Timo Hoogland
 
-[www.timohoogland.com](www.timohoogland.com)
+[www.timohoogland.com](https://www.timohoogland.com)
 
 ## Table of content
 
