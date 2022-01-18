@@ -8,7 +8,7 @@ var thispatch = null;
 
 function anything()
 {
-	initpath = messagename + "/";
+	initpath = messagename.replace(/\/[^/]+$/g, '/max-startup/');
 }
 
 function create_file()

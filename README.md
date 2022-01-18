@@ -1,35 +1,75 @@
-#Max ToolBox : A plugin for Max/MSP to help you patch faster.
+# Max ToolBox : Patch faster in Max/MSP
 
-The Max ToolBox is a tool that simplifies some aspects of patching within the Max/MSP environment. The main feature is the ability to quickly connect objects using keyboard shortcuts.
+The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP environment. The main feature is the ability to quickly connect objects using keyboard shortcuts. You can:
 
-##Downloads
+![](media/maxtoolbox-overview.gif)
 
-[Max 7](https://github.com/natcl/maxtoolbox/archive/master.zip)  
-[Max 5 and 6](https://github.com/natcl/maxtoolbox/archive/Version15.zip)  
-[Max 4](https://maxtoolbox.googlecode.com/files/maxtoolbox_b8_max4.zip)
+## Features Overview
 
-##Installation
+| function | shortkey | shell |
+| - | - | - |
+| connect multiple objects to a single | `a` | `@ms` |
+| connect single to multiple | `q` | `@sm` |
+| connect multiple objects to consecutive inlets of one object | `s` | `@rs` |
+| connect consecutive outlets of one object to a row | `w` | `@sr` |
+| connect rows of objects in parallel | `e` | `@rr` |
+| connect cascade | `C` (`shift` - `c`) | `@cc` |
+| connect multiple inlets of one object to multiple inlets of another | `d` | `@cc` |
+| choose number of inlet for next connection | `I` (`shift` - `i`) | `i` |
+| choose number of outlet for next connection | `O` (`shift` - `o`) | `o` |
+| choose number of connections to make from one object | `N` (`shift` - `n`) | `n` |
+| create new object(s) with connection to selected object(s) | `\|` (`shift` - `\`) | `@no` |
+| select next object down | `S` (`shift` - `s`) | |
+| select next object up | `W` (`shift` - `w`) | |
+| distribute objects horizontally with even spacing | hold `x` | |
+| distribute objects vertically with even spacing | hold `y` | |
+| distribute objects diagonally with even spacing | hold `x` & `y` | |
+| custom connections via shell-style interface | `±` (`shift` - `§`) | |
+| send bang to selected objects | `B` (`shift` - `b`) | |
+| send messages to objects via the shell | `±` (`shift` - `§`) | |
+| set ascending scriptingnames for objects | | `@name myParam$` |
+| customize shortkeys | | |
 
-###For Max 6.1 and newer
+## Documentation
 
-Unzip the Toolbox folder in your packages folder located in ```~/Documents/Max/Packages```
+[Open documentation](/docs/docs.md)
 
-###For Max 6 and older
+## Install (Max 8)
 
-1. Place the ToolBox folder in one of your search path (Easiest is in "Cycling' 74")
-2. Place the ToolBox.maxpat file in your extras folder
+Download the latest version of the package for [Max 8](https://github.com/tmhglnd/maxtoolbox/archive/refs/heads/master.zip)
 
-###To re-install/update the ToolBox
+```
+1. download latest code zip
+2. unzip and place in Max Packages (on MacOS ~/Documents/Max 8/Packages)
+3. restart Max8, open ToolBox from Menubar/Extras
+4. click Activate
+```
+
+```
+1. open terminal
+2. $ cd ~/Documents/Max\ 8/Packages
+3. $ git clone https://github.com/natcl/maxtoolbox.git
+4. restart Max8, open ToolBox from Menubar/Extras
+4. click Activate
+```
+
+### To re-install/update the ToolBox
 
 1. Make sure you delete all files related to the ToolBox
 2. Install as described above.
 
-##Contact me
+### For Max 7 and older
 
-You can contact me on [Twitter](https://twitter.com/natcl) or by email: maxtoolbox [at] studioimaginaire.com
+⚠️ **This version is temporarily not supported for Max 7 or older** ⚠️
 
-##Donations
+- [**Please download this older commit**](https://github.com/tmhglnd/maxtoolbox/tree/8852b5a87e939a72f0dd8647bfffe05ed96106ba)
 
-Donations are always appreciated.  [Thanks !](http://www.studioimaginaire.com/surfaceone/donate.html)
+<!-- - [Max 5 and 6](https://github.com/natcl/maxtoolbox/archive/Version15.zip)
+- [Max 4](https://maxtoolbox.googlecode.com/files/maxtoolbox_b8_max4.zip)
 
-<a href='http://www.studioimaginaire.com/surfaceone/donate.html'><img alt='Click here to lend your support to: Max ToolBox !' src='https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif' border='0' /></a>
+1. Place the ToolBox folder in one of your search path (Easiest is in "Cycling' 74")
+2. Place the ToolBox.maxpat file in your extras folder -->
+
+<!-- ## Contact me -->
+
+<!-- You can contact me on [Twitter](https://twitter.com/natcl) or by email: maxtoolbox [at] studioimaginaire.com -->
