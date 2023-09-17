@@ -61,9 +61,9 @@ Download the latest version of the package for [Max 8](https://github.com/tmhgln
 
 ### For Max 7 and older
 
-⚠️ **This version is temporarily not supported for Max 7 or older** ⚠️
+⚠️ **This version does not support Max 7 or older** ⚠️
 
-- [**Please download this older commit**](https://github.com/tmhglnd/maxtoolbox/tree/8852b5a87e939a72f0dd8647bfffe05ed96106ba)
+- [**Please download the older commit**](https://github.com/tmhglnd/maxtoolbox/tree/8852b5a87e939a72f0dd8647bfffe05ed96106ba)
 
 <!-- - [Max 5 and 6](https://github.com/natcl/maxtoolbox/archive/Version15.zip)
 - [Max 4](https://maxtoolbox.googlecode.com/files/maxtoolbox_b8_max4.zip)
