@@ -12,7 +12,7 @@ const handlers = {
 		initpath = path.join(p, '/max-startup/');
 	},
 	'create_file' : () => {
-		max.post('ToolBox activates at startup');
+		max.post('ToolBox launches at startup');
 
 		let f = path.join(process.cwd(), '../misc/toolbox_start.txt');
 		let t = fs.readFileSync(f, 'utf-8');
@@ -25,7 +25,7 @@ const handlers = {
 		fs.writeFileSync(toolbox, t);
 	},
 	'clear_file' : () => {
-		max.post('ToolBox not active at startup');
+		max.post('ToolBox deactivated');
 
 		// remove the toolbox start from max-startup
 		if (fs.existsSync(toolbox)){
