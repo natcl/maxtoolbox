@@ -1,6 +1,10 @@
 # Max ToolBox : Patch faster in Max/MSP
 
-The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP environment. The main feature is the ability to quickly connect objects using keyboard shortcuts. You can:
+The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP environment. The main feature is the ability to quickly connect objects using keyboard shortcuts. The Toolbox is for Mac and Windows.
+
+[Installation instructions below](#install-max-8)
+
+Below a short overview of what you can do:
 
 ![](media/maxtoolbox-overview.gif)
 
@@ -37,19 +41,23 @@ The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP
 
 ## Install (Max 8)
 
+Install by downloading:
+
 Download the latest version of the package for [Max 8](https://github.com/tmhglnd/maxtoolbox/archive/refs/heads/master.zip)
 
 ```
 1. download latest code zip
-2. unzip and place in Max Packages (on MacOS ~/Documents/Max 8/Packages)
+2. unzip and place in Max Packages (eg. MacOS ~/Documents/Max 8/Packages)
 3. restart Max8, open ToolBox from Menubar/Extras
 4. click Activate
 ```
 
+Or install via git clone:
+
 ```
 1. open terminal
 2. $ cd ~/Documents/Max\ 8/Packages
-3. $ git clone https://github.com/natcl/maxtoolbox.git
+3. $ git clone https://github.com/tmhglnd/maxtoolbox.git
 4. restart Max8, open ToolBox from Menubar/Extras
 4. click Activate
 ```
