@@ -45,9 +45,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
-					"outlettype" : [ "C74" ],
+					"outlettype" : [ "C74:" ],
 					"patching_rect" : [ 449.0, 88.0, 36.0, 21.0 ],
-					"text" : "t C74"
+					"text" : "t C74:"
 				}
 
 			}
@@ -59,7 +59,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 449.0, 58.0, 61.0, 21.0 ],
-					"text" : "route start"
+					"text" : "route loadstart"
 				}
 
 			}
