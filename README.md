@@ -1,6 +1,10 @@
 # Max ToolBox : Patch faster in Max/MSP
 
-The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP environment. The main feature is the ability to quickly connect objects using keyboard shortcuts. You can:
+The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP environment. The main feature is the ability to quickly connect objects using keyboard shortcuts. The Toolbox is for Mac and Windows.
+
+[Installation instructions below](#install-max-8)
+
+Below a short overview of what you can do:
 
 ![](media/maxtoolbox-overview.gif)
 
@@ -26,6 +30,7 @@ The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP
 | distribute objects diagonally with even spacing | hold `x` & `y` | |
 | custom connections via shell-style interface | `±` (`shift` - `§`) | |
 | send bang to selected objects | `B` (`shift` - `b`) | |
+| clear the console | `K` (`shift-k`) | |
 | send messages to objects via the shell | `±` (`shift` - `§`) | |
 | set ascending scriptingnames for objects | | `@name myParam$` |
 | customize shortkeys | | |
@@ -36,19 +41,23 @@ The Max ToolBox is a tool that simplifies aspects of patching within the Max/MSP
 
 ## Install (Max 8)
 
+Install by downloading:
+
 Download the latest version of the package for [Max 8](https://github.com/tmhglnd/maxtoolbox/archive/refs/heads/master.zip)
 
 ```
 1. download latest code zip
-2. unzip and place in Max Packages (on MacOS ~/Documents/Max 8/Packages)
+2. unzip and place in Max Packages (eg. MacOS ~/Documents/Max 8/Packages)
 3. restart Max8, open ToolBox from Menubar/Extras
 4. click Activate
 ```
 
+Or install via git clone:
+
 ```
 1. open terminal
 2. $ cd ~/Documents/Max\ 8/Packages
-3. $ git clone https://github.com/natcl/maxtoolbox.git
+3. $ git clone https://github.com/tmhglnd/maxtoolbox.git
 4. restart Max8, open ToolBox from Menubar/Extras
 4. click Activate
 ```
@@ -60,9 +69,9 @@ Download the latest version of the package for [Max 8](https://github.com/tmhgln
 
 ### For Max 7 and older
 
-⚠️ **This version is temporarily not supported for Max 7 or older** ⚠️
+⚠️ **This version does not support Max 7 or older** ⚠️
 
-- [**Please download this older commit**](https://github.com/tmhglnd/maxtoolbox/tree/8852b5a87e939a72f0dd8647bfffe05ed96106ba)
+- [**Please download the older commit**](https://github.com/tmhglnd/maxtoolbox/tree/8852b5a87e939a72f0dd8647bfffe05ed96106ba)
 
 <!-- - [Max 5 and 6](https://github.com/natcl/maxtoolbox/archive/Version15.zip)
 - [Max 4](https://maxtoolbox.googlecode.com/files/maxtoolbox_b8_max4.zip)

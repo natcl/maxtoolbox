@@ -3,7 +3,7 @@ autowatch = 1;
 if (max.version < "502")
 	post("ToolBox: Your version of Max/MSP needs to be at least 5.0.2, please update it.\n");
 else
-	post("ToolBox v.16 - by Nathanaël Lécaudé - updated by Timo Hoogland\n");
+	post("ToolBox v.18 - by Nathanaël Lécaudé - updated by Timo Hoogland\n");
 
 // Constantes
 var X1 = 0;
@@ -246,10 +246,16 @@ function alignhorz(mouseX)
 	objarray.sort(alignsortx);
 
 	var newpos = [];
-	// width of total objects is mouseX - 1st object - window posX
-	var width = Math.max(0, mouseX - objarray[0].obj.rect[X1] - max.frontpatcher.wind.location[X1]);
+
+	if (mouseX === 'no_mouse'){
+		// if no mouse movement then immediately reorder the objects
+		var width = Math.max(0, objarray[objarray.length-1].obj.rect[X1] - objarray[0].obj.rect[X1]);
+	} else {
+		// width of total objects is mouseX - (1st object + window posX + toolbar width)
+		var width = Math.max(0, mouseX - (objarray[0].obj.rect[X1] + max.frontpatcher.wind.location[X1] + 36));
+	}
 	// distance between object is width divided by total objects
-	var deltax = width / objarray.length;
+	var deltax = width / (objarray.length-1);
 
 	if (patching_mode){
 		// adjust if in patching mode
@@ -294,10 +300,16 @@ function alignvert(mouseY)
 	objarray.sort(alignsorty);
 	
 	var newpos = [];
-	// width of total objects is mouseX - 1st object - window posY
-	var height = Math.max(0, mouseY - objarray[0].obj.rect[Y1] - max.frontpatcher.wind.location[Y1]);
+
+	if (mouseY === 'no_mouse'){
+		// if no mouse movement then immediately reorder the objects
+		var height = Math.max(0, objarray[objarray.length-1].obj.rect[Y1] - objarray[0].obj.rect[Y1]);
+	} else {
+		// width of total objects is mouseX - (1st object + window posY+ toolbar width)
+		var height = Math.max(0, mouseY - (objarray[0].obj.rect[Y1] + max.frontpatcher.wind.location[Y1] + 36));
+	}
 	// distance between object is height divided by total objects
-	var deltay = height / (objarray.length);
+	var deltay = height / (objarray.length-1);
 
 	if (patching_mode){
 		// adjust if in patching mode
