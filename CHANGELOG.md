@@ -1,5 +1,19 @@
 # Max ToolBox - CHANGELOG
 
+## Version 19
+Aug 22th, 2026
+
+* Fix for horizontal/vertical alignment issue when patch was scrolled to far location
+* Fix for "new object with connection" where last object gets selected (thanks to [@stefanostev](https://github.com/stefanostev))
+
+## Version 18
+Oct 26th, 2024
+
+* Fix `loadstart` and `loadend` (thanks to [@exit-only](https://github.com/exit-only))
+* Fix startup path to `C74:` (thanks to [@exit-only](https://github.com/exit-only))
+* Fix quick distribution for `x` and `y` alignment (without mouse movement)
+* Shortkey added: clear the Max-console with `shift-k`
+
 ## Version 16
 Jan 18th, 2022
 
